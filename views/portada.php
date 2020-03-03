@@ -13,7 +13,7 @@
     		  (TEMPLATE)::login();
     		?>  
     		
-    		<h2>Bienvenido a nuestra biblioteca</h2>
+    		<h2>Bienvenido a nuestra app de mascotas</h2>
     		<?php 
     		  echo Login::get()? 
     		          "<p>Identificado como ".Login::get()->usuario."</p>":
@@ -24,7 +24,7 @@
         		  "<p>No eres admin</p>";
     		  
     		  echo Login::hasPrivilege(500)?
-        		  "<p>Tienes nivel de privilegio 500 o más</p>":
+        		  "<p>Tienes nivel de privilegio 500 o sea, eres supervisor</p>":
         		  "<p>Tienes menos de 500 de nivel de privilegio</p>";
     		
     		?>

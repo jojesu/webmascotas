@@ -40,11 +40,11 @@
            
            $consulta="INSERT INTO usuarios(
                           usuario, clave, nombre, apellido1, apellido2,
-                          privilegio, administrador, email)
+                          privilegio, administrador, email, imagen)
                        VALUES(
                           '$this->usuario','$this->clave', '$this->nombre',
                           '$this->apellido1', '$this->apellido2',
-                           $this->privilegio, $this->administrador, '$this->email')";
+                           $this->privilegio, $this->administrador, '$this->email', '$this->imagen')";
                            
            return DB::insert($consulta); //conectar y ejecutar
        }
@@ -85,7 +85,8 @@
                           apellido2='$this->apellido2', 
                           privilegio=$this->privilegio,
                           administrador=$this->administrador,
-                          email='$this->email'
+                          email='$this->email',
+                          imagen='$this->imagen'
                         WHERE id=$this->id";
         
             return DB::update($consulta);
@@ -99,7 +100,7 @@
         
         //__toString
         public function __toString():string{
-            return "$this->id: $this->usuario ($this->email) $this->nombre $this->apellido1";
+            return "$this->id: $this->usuario ($this->email) $this->nombre $this->apellido1 $this->imagen";
         }
     }
     

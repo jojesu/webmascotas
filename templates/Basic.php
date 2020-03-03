@@ -4,7 +4,7 @@
         // pone el header
         public static function header(string $pagina = ''){?>
                <header>
-               		<h1>Framework</h1>
+               		<h1>WEBMASCOTAS</h1>
                		<h2><?=$pagina?></h2>
                </header>
         <?php }
@@ -43,7 +43,7 @@
         // pone el footer
         public static function footer(){?>
             <footer>
-            	<p>Framework 2020</p>
+            	<p>WebMascotas Framework 2020</p>
             	<p>Robert@CIFO</p>
             </footer>
         <?php }
