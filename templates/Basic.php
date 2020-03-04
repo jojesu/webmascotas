@@ -1,8 +1,8 @@
 <?php
 
-    class Basic{        
-        // pone el header
-        public static function header(string $pagina = ''){?>
+class Basic{
+    // pone el header
+    public static function header(string $pagina = ''){?>
                <header>
                		<h1>WEBMASCOTAS</h1>
                		<h2><?=$pagina?></h2>
