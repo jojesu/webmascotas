@@ -20,11 +20,10 @@
 				<th>Biografía</th>
 				<th>Nacimiento</th>
 				<th>Fallecimiento</th>
-				<th>Nacimiento</th>
 			</tr>
     		<?php foreach($mascotas as $mascota){
     			   echo "<tr>";
-    			   echo "<td>$mascota-</td>";  //recuperar imagen
+    			    
     			   echo "<td>$mascota->nombre</td>";
     			   echo "<td>$mascota->sexo</td>";
     			   echo "<td>$mascota->biografia</td>";

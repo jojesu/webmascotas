@@ -31,7 +31,7 @@ class TipoController{
         if(!$id)
             throw new Exception("No se indicó el tipo de mascota a ver.");
             
-            //recuperar la mascota con dicho código
+            //recuperar el tipo de mascota con dicho código
             $tipo=Tipo::getTipo($id);
             
             //comprobar que la mascota existe
