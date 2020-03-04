@@ -15,7 +15,7 @@ class Mascota{
     }
     
     //recuperar las mascotas de un usuario
-    public static function getAdUser(int $idusuario):array{
+    public static function mascotasUsuario(int $idusuario):array{
         $consulta="SELECT * FROM mascotas WHERE idusuario=$idusuario"; //preparar la consulta
         return DB::selectAll($consulta, self::class);
     }
@@ -26,13 +26,15 @@ class Mascota{
         return DB::select($consulta, self::class); //ejecutar y retornar el resultado
     }
     
-    public function guardar(){ //insertar una nueva mascota
+    //insertar una nueva mascota
+    public function guardar(){ 
         $consulta="INSERT INTO mascotas(nombre, sexo, biografia, fechanacimiento, fechafallecimiento, idusuario, idraza)
             VALUES('$this->nombre','$this->sexo', '$this->fechanacimiento','$this->fechafallecimiento', $this->idusuario, $this->idraza)";
         return DB::insert($consulta);
     }
-    
-    public static function borrar(int $id){ //borrar una mascota por id
+   
+    //borrar una mascota por id
+    public static function borrar(int $id){ 
         //preparar consulta
         $consulta="DELETE FROM mascotas WHERE id=$id";
         //ejecutar consulta
@@ -64,6 +66,6 @@ class Mascota{
                    WHERE $campo LIKE '%$valor%'
                    ORDER BY $orden $sentido";
             return DB::selectAll($consulta, self::class);
-    }
+    }    
     
 }
