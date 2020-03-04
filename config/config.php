@@ -3,7 +3,7 @@
     // Fichero config.php
     
     // PARA EL AUTOLOAD
-    $classmap=['controllers','models','libraries','templates']; // directorios donde buscar clases
+    $classmap = ['controllers','models','libraries','templates']; // directorios donde buscar clases
 
     // TEMPLATE A USAR EN LAS VISTAS
     define('TEMPLATE','Basic');
@@ -24,7 +24,7 @@
     define('DEFAULT_METHOD', 'index');
     
     // PARA EL ENVIO DE MAIL DE CONTACTO
-    define('CONTACT_EMAIL', 'robertsallent@gmail.com');
+    define('CONTACT_EMAIL', 'pacojesus@g.com');
     
     
     

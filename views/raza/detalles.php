@@ -12,9 +12,8 @@
 		  (TEMPLATE)::login();
 		?>  
 		
-		<h2>Detalles del usuario</h2>
-		<h3><?="$usuario->usuario ($usuario->email)"?></h3>
-		
+		<h2>Detalles de la raza</h2>
+	
 		<p><b>RAZA:</b> <?=$raza->nombre?></p>
 		<p><b>DESCRIPCIÓN:</b> <?=$raza->descripcion?></p>
 	

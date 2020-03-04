@@ -21,7 +21,7 @@ class FotoController{
         
         $tipos = Tipo::get();
         
-        $mascotas = Mascotas::get();
+        $mascotas = Mascota::get();
         
         include 'views/foto/lista.php';
   

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -19,21 +19,19 @@
 		?>  
 				
 		<h2>Formulario de edición</h2>
-		<p><?="$usuario->usuario ($usuario->email)"?></p>
 		
-		<?=empty( $GLOBALS['mensaje'])? "" : "<p>". $GLOBALS['mensaje']."</p>"?>
-
 		<form method="post" action="/raza/update">
 		
 		    <!-- id del usuario a modificar -->
 			<input type="hidden" name="id" value="<?=$raza->id?>">
-			
+			<input type="hidden" name="idtipo" value="<?=$raza->idtipo?>">
+
 			<!-- resto del formulario... -->
-			<label>Nombre</label>
+			<label>Nombre:</label>
 			<input type="text" name="nombre" value="<?=$raza->nombre?>">
 			<br>
-			<label>Descripcion</label>
-			<input type="textarea" name="descripcion">
+			<label>Descripcion:</label>
+			<textarea name="descripcion">
 			<br>
 			
 			<input type="submit" name="actualizar" value="Actualizar">

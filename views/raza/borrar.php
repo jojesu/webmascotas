@@ -11,8 +11,7 @@
 		  (TEMPLATE)::nav();
 		  (TEMPLATE)::login();
 		?>  
-		<h2>Confirmar baja de usuario</h2>
-		<p><?="$usuario->usuario ($usuario->email)"?></p>
+		<h2>Confirmar borrado de la raza <?=$raza->nombre ?></h2>
 		
 		<form method="post" action="/raza/destroy">
 			<p>Confirmar el borrado de la raza <?=$raza->nombre?>.</p>

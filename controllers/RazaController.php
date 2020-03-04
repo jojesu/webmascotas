@@ -27,9 +27,11 @@ class RazaController{
         if(! (Login::isAdmin() || Login::get()->id == $id))
             throw new Exception('No tienes los permisos necesarios');
             
+            //Pasamos a la vista la raza
+            $raza = Raza::getById($id);
             // recuperar el usuario
-            if(!$usuario = Usuario::getById($id))
-                throw new Exception("No se pudo recuperar el usuario.");
+            if(!$raza)
+                throw new Exception("No se pudo recuperar la raza.");
                 
                 include 'views/raza/detalles.php';
     }
@@ -42,6 +44,9 @@ class RazaController{
         if(!Login::isAdmin())
             throw new Exception('No tienes permiso para hacer esto');
         
+        //le pasamos a la vista la lista de tipos para el select
+        $tipos = Tipo::get();  
+            
         include 'views/raza/nuevo.php';
     }
     
@@ -56,7 +61,8 @@ class RazaController{
             
             $raza->nombre = DB::escape($_POST['nombre']);
             $raza->descripcion = DB::escape($_POST['descripcion']);
-            
+            $raza->idtipo = $_POST['idtipo'];
+           
             if(!$raza->guardar())
                 throw new Exception("No se pudo guardar $raza->nombre");
                 
@@ -72,48 +78,50 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id) || (Login::hasPrivilege()<100))
+        if(!(Login::isAdmin() || (Login::hasPrivilege(100))))
             throw new Exception('No tienes los permisos necesarios');
-            
-            // recuperar el usuario
-            if(!$usuario = Usuario::getById($id))
-                throw new Exception("No se indicó el usuario.");
+        
+       
                 
-                // mostrar el formulario de edición
-                include 'views/raza/actualizar.php';
+      // mostrar el formulario de edición
+       include 'views/raza/actualizar.php';
     }
     
     
     // aplica los cambios de un usuario
     public function update(){
         
+        //le pasamos las razas a la vista
+        $raza = Raza::getById($_POST['id']);
+        
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id) || (Login::hasPrivilege()<100))
+        if(! (Login::isAdmin() || (Login::hasPrivilege(100))))
             throw new Exception('No tienes los permisos necesarios');
             
-            // comprueba que llegue el formulario con los datos
-            if(empty($_POST['actualizar']))
-                throw new Exception('No se recibieron datos');
+       // comprueba que llegue el formulario con los datos
+       if(empty($_POST['actualizar']))
+          throw new Exception('No se recibieron datos');
                 
-                $id = intval($_POST['id']); // recuperar el id vía POST
+      // $id = intval($_POST['id']); // recuperar el id vía POST
                 
-                // recuperar el usuario
-                if(!$raza = Raza::getById($id))
-                    throw new Exception("No existe la raza $id.");
+       // recuperar el usuario
+       if(!$raza = Raza::getById($id))
+         throw new Exception("No existe la raza $id.");
                     
-                    $raza->nombre = DB::escape($_POST['nombre']);
-                    $raza->descripcion = DB::escape($_POST['descripcion']);
-                        
-                        // intenta realizar la actualización de datos
-                        if($raza->actualizar()===false)
-                            throw new Exception("No se pudo actualizar $raza->nombre");
+       $raza->nombre = DB::escape($_POST['nombre']);
+       $raza->descripcion = DB::escape($_POST['descripcion']);
+       $raza->idtipo = $_POST['idtipo'];
+                 
+       // intenta realizar la actualización de datos
+       if($raza->actualizar()===false)
+          throw new Exception("No se pudo actualizar $raza->nombre");
+                           
+       // prepara un mensaje
+       $GLOBALS['mensaje'] = "Actualización de la raza $raza->nombre correcta.";
                             
-                            // prepara un mensaje
-                            $GLOBALS['mensaje'] = "Actualización de la raza $raza->nombre correcta.";
-                            
-                            // repite la operación edit, así mantiene la vista de edición.
-                            $this->edit($raza->id);
+       // repite la operación edit, así mantiene la vista de edición.
+       $this->edit($raza->id);
     }
         
     // muestra el formulario de confirmación de eliminación
@@ -121,7 +129,7 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id) || (Login::hasPrivilege()<100))
+        if(! (Login::isAdmin() || (Login::hasPrivilege())))
             throw new Exception('No tienes los permisos necesarios');
             
             // recupera el usuario para mostrar sus datos en la vista
@@ -137,7 +145,7 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id) || (Login::hasPrivilege()<100))
+        if(! (Login::isAdmin() || (Login::hasPrivilege())))
             throw new Exception('No tienes los permisos necesarios');
             
             //recuperar el identificador vía POST
@@ -148,6 +156,7 @@ class RazaController{
                 throw new Exception("No se pudo eliminar la raza $id");
                 
                 $mensaje = "La raza ha sido borrada correctamente.";
+                
                 include 'views/exito.php'; //mostrar éxito
     }   
     

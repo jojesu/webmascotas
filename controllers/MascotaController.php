@@ -17,6 +17,7 @@ class MascotaController{
     
     //operación para listar todos las mascotas de un usuario
     public function mascotasUsuario(){
+        
         $usuario=Login::getUsuario(); //recupera el usuario actual
         
         $mascotas=Mascota::getAdUser($usuario->id); //recupera las mascotas del usuario

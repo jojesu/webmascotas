@@ -16,9 +16,19 @@ class Basic{
         			<li><a href="/">Inicio</a></li>
         			<li><a href="/contacto">Contactar</a></li>
         		</ul>
+        		<?php if(Login::hasPrivilege(100)){?>
+        		<ul>
+        			<li><a href="/mascota/create">CREAR NUEVA MASCOTA</a></li>
+        		</ul>
+        		
+        		<?php }?>
         		<?php if(Login::isAdmin()){?>
               		<ul>
             			<li><a href="/usuario/list">Lista de usuarios</a></li>
+            			<li><a href="/raza/list">Lista de razas</a></li>
+            			<li><a href="/mascota/list">Lista de mascotas</a></li>
+            			<li><a href="/tipo/list">Lista de tipos</a></li>
+            			
             		</ul>
         		<?php }?>
             </nav>

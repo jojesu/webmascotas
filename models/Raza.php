@@ -1,5 +1,4 @@
 <?php
-namespace models;
 
 class Raza{
     // PROPIEDADES
@@ -12,14 +11,24 @@ class Raza{
     
     public function guardar(){
         
-        $consulta="INSERT INTO razas(
-                          nombre, descripcion)
-                       VALUES(
-                          '$this->nombre','$this->descripcion')";
-                           
-                           return DB::insert($consulta); //conectar y ejecutar
+        $consulta="INSERT INTO razas(nombre, descripcion, idtipo)
+                       VALUES('$this->nombre','$this->descripcion', $this->idtipo)";
+
+        return DB::insert($consulta); //conectar y ejecutar
     }
     
+    
+    //actualizar una raza
+    public function actualizar(){
+        
+        $consulta="UPDATE razas SET
+                     nombre='$this->nombre',
+                     descripcion='$this->descripcion',
+                     idtipo='$this->idtipo'
+                    WHERE id=$this->id";
+        
+        return DB::update($consulta);
+    }
     
     
     // recuperar todos los razas
@@ -40,20 +49,6 @@ class Raza{
             
             $consulta="SELECT * FROM razas WHERE $c LIKE '%$v%' ORDER BY $o $s";
             return DB::selectAll($consulta, self::class);
-    }
-    
-    
-    
-    
-    //actualizar una raza
-    public function actualizar(){
-        
-        $consulta="UPDATE razas SET
-                          nombre='$this->nombre',
-                          descripcion='$this->descripcion'
-                        WHERE id=$this->id";
-        
-        return DB::update($consulta);
     }
     
     //borrar una raza existente
