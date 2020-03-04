@@ -27,14 +27,16 @@
 		
 		    <!-- id de la mascota a modificar -->
 			<input type="hidden" name="id" value="<?=$mascota->id?>">
+			<input type="hidden" name="idusuario" value="<?=$mascota->idusuario?>">
+			<input type="hidden" name="idraza" value="<?=$mascota->idraza?>">
 			
 			<!-- resto del formulario... -->
 			<label>Nombre</label>
 			<input type="text" name="nombre" value="<?=$mascota->nombre?>">
 			<br>
 			<label>Sexo:</label><br>
-			<input type="radio" name="sexo" value="v">
-			<label>V</label><br>			
+			<input type="radio" name="sexo" value="v" checked>
+			<label>V</label>			
 			<input type="radio" name="sexo" value="m">
 			<label>M</label>
 			<br>
@@ -46,6 +48,7 @@
 			<br>
 			<label>Fecha fallecimiento</label>
 			<input type="date" name="fechafallecimiento" value="<?=$mascota->fechafallecimiento?>">
+			
 			<br>			
 			<input type="submit" name="actualizar" value="Actualizar">
 		</form>

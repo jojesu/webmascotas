@@ -1,6 +1,4 @@
 <?php
-namespace models;
-
 class Raza{
     // PROPIEDADES
     public $id=0, $nombre='', $descripcion='', $idtipo='';
@@ -20,11 +18,9 @@ class Raza{
                            return DB::insert($consulta); //conectar y ejecutar
     }
     
-    
-    
     // recuperar todos los razas
     public static function get():array{
-        $consulta="SELECT * FROM razas"; //preparar la consulta
+        $consulta="SELECT r.id, r.nombre as raza, t.nombre as tipo FROM razas r inner join tipos t on t.id=r.idtipo"; //preparar la consulta
         return DB::selectAll($consulta, self::class);
     }
     

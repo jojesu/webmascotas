@@ -28,9 +28,20 @@ class Mascota{
     
     //insertar una nueva mascota
     public function guardar(){ 
-        $consulta="INSERT INTO mascotas(nombre, sexo, biografia, fechanacimiento, fechafallecimiento, idusuario, idraza)
-            VALUES('$this->nombre','$this->sexo', '$this->fechanacimiento','$this->fechafallecimiento', $this->idusuario, $this->idraza)";
+        if(empty($this->fechafallecimiento)){
+        $consulta="INSERT INTO mascotas(nombre, sexo, biografia, fechanacimiento, 
+                fechafallecimiento, idusuario, idraza)
+                VALUES('$this->nombre','$this->sexo', '$this->biografia', '$this->fechanacimiento',NULL, 
+                    $this->idusuario, $this->idraza)";
+        
         return DB::insert($consulta);
+        }else{
+            $consulta="INSERT INTO mascotas(nombre, sexo, biografia, fechanacimiento,
+                fechafallecimiento, idusuario, idraza)
+                VALUES('$this->nombre','$this->sexo', '$this->biografia', '$this->fechanacimiento','$this->fechafallecimiento',
+                    $this->idusuario, $this->idraza)";
+                    return DB::insert($consulta);
+        }
     }
    
     //borrar una mascota por id
@@ -42,6 +53,20 @@ class Mascota{
     }
     
     public function actualizar(){ //actualizar una mascota
+        if(empty($this->fechafallecimiento)){
+          
+        //preparar consulta
+            $consulta="UPDATE mascotas SET
+                    nombre='$this->nombre',
+                    sexo='$this->sexo',
+                    biografia='$this->biografia',
+                    fechanacimiento='$this->fechanacimiento',
+                    fechafallecimiento=NULL,
+                    idusuario=$this->idusuario,
+                    idraza=$this->idraza
+                   WHERE id=$this->id";
+            return DB::update($consulta);
+        }else{
         //preparar consulta
         $consulta="UPDATE mascotas SET
                     nombre='$this->nombre',
@@ -53,6 +78,7 @@ class Mascota{
                     idraza=$this->idraza
                    WHERE id=$this->id";
         return DB::update($consulta);
+        }
     }
     
     public function __toString():string{  //__toString

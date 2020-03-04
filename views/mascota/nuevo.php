@@ -22,24 +22,32 @@
 		<h2>Nueva mascota</h2>
 		
 		<form method="post" action="/mascota/store">
+		
+			<input type="hidden" name="idusuario" value="<?= Login::get($id);?>">	
 			<label>Nombre</label>
-			<input type="text" name="nombre" value="<?=$mascota->nombre?>">
+			<input type="text" name="nombre">
 			<br>
 			<label>Sexo:</label><br>
 			<input type="radio" name="sexo" value="v">
-			<label>V</label><br>			
+			<label>V</label>			
 			<input type="radio" name="sexo" value="m">
 			<label>M</label>
 			<br>
 			<label>Biografía</label>
-			<input type="text" name="biografia" value="<?=$mascota->biografia?>">
+			<input type="text" name="biografia">
 			<br>
 			<label>Fecha nacimiento</label>
-			<input type="date" name="fechanacimiento" value="<?=$mascota->fechanacimiento?>">
+			<input type="date" name="fechanacimiento">
 			<br>
 			<label>Fecha fallecimiento</label>
-			<input type="date" name="fechafallecimiento" value="<?=$mascota->fechafallecimiento?>">
-			<br>			
+			<input type="date" name="fechafallecimiento">
+			<br>
+			<select name="idraza">
+			<?php 
+			foreach ($razas as $raza)
+			      echo "<option value='$raza->id'>$raza->tipo $raza->raza</option>"; 
+			?>
+			</select>			
 			<input type="submit" name="guardar" value="Guardar">
 		</form>
 		<br>
