@@ -25,4 +25,8 @@
   background-size: cover;
  }
 
- 
+.bg-register-image{
+  background: url("https://soyunperro.com/wp-content/uploads/perrosusto.jpg.webp");
+  background-position: center;
+  background-size: cover;
+ } 

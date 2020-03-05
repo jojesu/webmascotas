@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Actualizar datos de la mascota <?=$mascota->nombre?></title>
+		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">
 		<style>
 		  form label{
 		      display: inline-block;
@@ -23,39 +26,67 @@
 		
 		<?=empty( $GLOBALS['mensaje'])? "" : "<p>". $GLOBALS['mensaje']."</p>"?>
 
-		<form method="post" action="/mascota/actualizar">
+		<div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+              <div class="col-lg-7">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Formulario de edición</h1>
+                  </div>
+                  <form class="user" method="post" action="/mascota/actualizar">
+                  <!-- id de la mascota a modificar -->
+        			<input type="hidden" name="id" value="<?=$mascota->id?>">
+        			<input type="hidden" name="idusuario" value="<?=$mascota->idusuario?>">
+        			<input type="hidden" name="idraza" value="<?=$mascota->idraza?>">
+        			
+                    <div class="form-group">
+                        <div class="form-group">
+                            <input type="text" name="nombre" value="<?=$mascota->nombre?>" class="form-control form-control-user" id="exampleFirstName" placeholder="Nombre">
+                        </div>
+              			<div class="form-check">
+                          <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="H" checked>
+                          <label class="form-check-label" for="exampleRadios1">
+                            Hembra
+                          </label>                      
+                          <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="M">
+                          <label class="form-check-label" for="exampleRadios2">
+                            Macho
+                          </label>
+                        </div>
+                        
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-user" value="<?=$mascota->biografia?>" name="biografia" id="exampleInputEmail" placeholder="Email">
+                        </div>
+                        
+                        <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="date" class="form-control form-control-user" name="fechanacimiento" id="exampleInputPassword" value="<?=$mascota->fechanacimiento?>" placeholder="Password">
+                          </div>
+                          <div class="col-sm-6">
+                            <input type="date" class="form-control form-control-user" name="fechafallecimiento" id="exampleRepeatPassword" value="<?=$mascota->fechafallecimiento?>" placeholder="Repeat Password">
+                          </div>
+                        </div>
+                    	<input type="submit" name="actualizar" value="Actualizar" class="btn btn-primary btn-user btn-block">
+                    	<hr>
+                    	<a class="btn btn-primary" href="/mascota/show/<?=$mascota->id?>">Detalles</a> 
+        				<a class="btn btn-primary" href="/mascota/list">Volver al listado de mascotas</a>
+                    </div>
+                  </form>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        
+      </div>					
 		
-		    <!-- id de la mascota a modificar -->
-			<input type="hidden" name="id" value="<?=$mascota->id?>">
-			<input type="hidden" name="idusuario" value="<?=$mascota->idusuario?>">
-			<input type="hidden" name="idraza" value="<?=$mascota->idraza?>">
-			
-			<!-- resto del formulario... -->
-			<label>Nombre</label>
-			<input type="text" name="nombre" value="<?=$mascota->nombre?>">
-			<br>
-			<label>Sexo:</label><br>
-			<input type="radio" name="sexo" value="v" checked>
-			<label>V</label>			
-			<input type="radio" name="sexo" value="m">
-			<label>M</label>
-			<br>
-			<label>Biografía</label>
-			<input type="text" name="biografia" value="<?=$mascota->biografia?>">
-			<br>
-			<label>Fecha nacimiento</label>
-			<input type="date" name="fechanacimiento" value="<?=$mascota->fechanacimiento?>">
-			<br>
-			<label>Fecha fallecimiento</label>
-			<input type="date" name="fechafallecimiento" value="<?=$mascota->fechafallecimiento?>">
-			
-			<br>			
-			<input type="submit" name="actualizar" value="Actualizar">
-		</form>
-		<br>
+		 
 		
-		<a href="/mascota/show/<?=$mascota->id?>">Detalles</a> - 
-		<a href="/mascota/list">Volver al listado de mascotas</a>
 		
 		<?php 
 		  (TEMPLATE)::footer();

@@ -4,6 +4,8 @@
 		<meta charset="UTF-8">
 		<title>Login</title>
 		<link href="css/sb-admin-2.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">
 		<style>
 		  form label{
 		      display: inline-block;
@@ -15,6 +17,7 @@
 	
 	<body>
 		<?php 
+		  
 		  (TEMPLATE)::nav();
 		  (TEMPLATE)::header("Identificación");
 		  

@@ -42,7 +42,6 @@
 			<label>Fecha fallecimiento</label>
 			<input type="date" name="fechafallecimiento">
 			<br>
-			<select name="idraza">
 			<?php 
 			foreach ($razas as $raza)
 			      echo "<option value='$raza->id'>$raza->tipo $raza->raza</option>"; 

@@ -76,10 +76,11 @@ class MascotaController{
             $mascota->fechafallecimiento=DB::escape($_POST['fechafallecimiento']);
             $mascota->idraza=$_POST['idraza'];
             $mascota->idusuario=$usuario->id;
-                    
+            
+          
             // TRATAMIENTO DEL FICHERO IMAGEN
             /*if(Upload::llegaFichero('imagen'))
-                $mascota->imagen=Upload::procesar($_FILES['imagen'],'img/mascotas',true,0,'image/*');*/
+                $foto->fichero=Upload::procesar($_FILES['fichero'],'img/mascotas',true,0,'image/*');*/
                 
                 if(!$mascota->guardar()) //guardar en la BDD
                     throw new Exception("No se pudo guardar $mascota->nombre");
@@ -102,7 +103,7 @@ class MascotaController{
         
         if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())
             throw new Exception('No tienes permiso');
-            var_dump($mascota);
+            
             //comprobar que me llega el identificador
             if(!$id)
                 throw new Exception("No se indicó la mascota a editar.");
@@ -179,7 +180,7 @@ class MascotaController{
     //PASO 1: muestra el formulario de confirmación de eliminación
     public function delete(int $id=0){
         
-        $usuario = Login::getUsuario(); //recupera el usuario actual
+        $usuario = Login::get(); //recupera el usuario actual
         $mascota = Mascota::getMascota($id);
         
         if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())
@@ -204,7 +205,7 @@ class MascotaController{
             
             $id=intval($_POST['id']); //recuperar el id vía POST
             
-            $usuario = Login::getUsuario(); //recupera el usuario actual
+            $usuario = Login::get(); //recupera el usuario actual
             $mascota = Mascota::getMascota($id);
             
             if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())

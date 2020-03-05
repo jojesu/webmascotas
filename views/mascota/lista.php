@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Lista de mascotas</title>
-		
+		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">
 	</head>
 	<body>
 		<?php 
@@ -13,7 +15,7 @@
 		?>  
 		<h2>Lista de mascotas</h2>
 			
-		<table border="1">
+		<table class="table">
 			<tr>
 				<th>Nombre</th>
 				<th>Sexo</th>
