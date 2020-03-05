@@ -1,5 +1,4 @@
 <?php
-
 class Raza{
     // PROPIEDADES
     public $id=0, $nombre='', $descripcion='', $idtipo='';
@@ -7,29 +6,13 @@ class Raza{
     //METODOS
     // METODOS DEL CRUD
     
-    // registrar una nueva raza.
-    
-    public function guardar(){
-        
-        $consulta="INSERT INTO razas(nombre, descripcion, idtipo)
+    public static function guardar(){
+   $consulta="INSERT INTO razas(nombre, descripcion, idtipo)
                        VALUES('$this->nombre','$this->descripcion', $this->idtipo)";
-
+                       
         return DB::insert($consulta); //conectar y ejecutar
+                return DB::insert($consulta); //conectar y ejecutar
     }
-    
-    
-    //actualizar una raza
-    public function actualizar(){
-        
-        $consulta="UPDATE razas SET
-                     nombre='$this->nombre',
-                     descripcion='$this->descripcion',
-                     idtipo='$this->idtipo'
-                    WHERE id=$this->id";
-        
-        return DB::update($consulta);
-    }
-    
     
     // recuperar todos los razas
     public static function get():array{
@@ -46,9 +29,23 @@ class Raza{
     //recuperar razas con un filtro
     public static function getFiltered(
         string $c='user', string $v='', string $o='id', string $s='ASC'):array{
-            
+        
             $consulta="SELECT * FROM razas WHERE $c LIKE '%$v%' ORDER BY $o $s";
             return DB::selectAll($consulta, self::class);
+    }
+    
+    
+    
+    
+    //actualizar una raza
+    public function actualizar(){
+    
+        $consulta="UPDATE razas SET
+                          nombre='$this->nombre',
+                          descripcion='$this->descripcion'
+                        WHERE id=$this->id";
+                        
+        return DB::update($consulta);
     }
     
     //borrar una raza existente

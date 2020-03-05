@@ -1,4 +1,5 @@
 <?php
+
 //CONTROLADOR 
 class MascotaController{
     
@@ -10,6 +11,8 @@ class MascotaController{
     
     //operación para listar todas las mascotas
     public function list(){
+        $mascotas=Mascota::get(); //recupera las mascotas
+        
         
         //cargar la vista del listado
         include 'views/mascota/lista.php';
@@ -46,9 +49,10 @@ class MascotaController{
     //GUARDAR SE HACE EN 2 PASOS
     //PASO 1: muestra el formulario de nueva mascota
     public function create(){
-        if(!Login::getUsuario()){
+        if(!Login::get()){
             throw new Exception('Debes ser admin, supervisor o usuario registrado');
         }
+        $razas = Raza::get();
         
         include 'views/mascota/nuevo.php';
     }
@@ -59,24 +63,24 @@ class MascotaController{
         if(empty($_POST['guardar']))
             throw new Exception('No se recibieron los datos');
             // comprueba si es admin, supervisor o usuario registrado
-            if(!Login::getUsuario()){
+            if(!Login::get()){
                 throw new Exception('Debes ser admin o usuario registrado');
             }
             
-            $usuario=Login::getUsuario(); //recupera el usuario actual
+            $usuario=Login::get(); //recupera el usuario actual
             
             $mascota = new Mascota();  //nueva mascota, la info viene por POST
-            $mascota->nombre=DB::escape($_POST['titol']);
+            $mascota->nombre=DB::escape($_POST['nombre']);
             $mascota->sexo=DB::escape($_POST['sexo']);
             $mascota->biografia=DB::escape($_POST['biografia']);
             $mascota->fechanacimiento=DB::escape($_POST['fechanacimiento']);
             $mascota->fechafallecimiento=DB::escape($_POST['fechafallecimiento']);
             $mascota->idraza=$_POST['idraza'];
             $mascota->idusuario=$usuario->id;
-            
+                    
             // TRATAMIENTO DEL FICHERO IMAGEN
-            if(Upload::llegaFichero('imagen'))
-                $mascota->imagen=Upload::procesar($_FILES['imagen'],'img/mascotas',true,0,'image/*');
+            /*if(Upload::llegaFichero('imagen'))
+                $mascota->imagen=Upload::procesar($_FILES['imagen'],'img/mascotas',true,0,'image/*');*/
                 
                 if(!$mascota->guardar()) //guardar en la BDD
                     throw new Exception("No se pudo guardar $mascota->nombre");
@@ -84,7 +88,7 @@ class MascotaController{
                     //muestra la vista de éxito
                     $mensaje="Guardado de la mascota $mascota->nombre correcto.";
                     
-                    $usuario=Login::getUsuario(); //recupera el usuario actual
+                    $usuario=Login::get(); //recupera el usuario actual
                     
                     include 'views/exito.php'; //mostrar éxito
     }
@@ -93,12 +97,13 @@ class MascotaController{
     //PASO 1: muestra el formulario de edición de una mascota
     public function edit(int $id=0){
         
-        $usuario=Login::getUsuario(); //recupera el usuario actual
+        $usuario = Login::get(); //recupera el usuario actual
         $mascota = Mascota::getMascota($id);
+        
         
         if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())
             throw new Exception('No tienes permiso');
-            
+            var_dump($mascota);
             //comprobar que me llega el identificador
             if(!$id)
                 throw new Exception("No se indicó la mascota a editar.");
@@ -112,7 +117,7 @@ class MascotaController{
     }
     
     //PASO 2: aplica los cambios de la mascota
-    public function update(){
+    public function actualizar(){
         //comprueba que llegue el formulario con los datos y no por URL
         if(empty($_POST['actualizar']))
             throw new Exception('No está permitido entrar por la URL');
@@ -123,25 +128,24 @@ class MascotaController{
             //comprobar que existe la mascota
             if(!$mascota)
                 throw new Exception('No existe la mascota');
-                
-                $id=intval($_POST['id']); //recuperar el id vía POST
-                
-                $usuario = Login::getUsuario(); //recupera el usuario actual
-                $mascota = Mascota::getMascota($id);
-                
+                                
+                $usuario = Login::get(); //recupera el usuario actual
+                             
                 if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())
                     throw new Exception('No tienes permiso');
                     
-                    $mascota = new Mascota();  //nueva mascota, la info viene por POST
-                    $mascota->nombre=DB::escape($_POST['titol']);
+                    $mascota->nombre=DB::escape($_POST['nombre']);
                     $mascota->sexo=DB::escape($_POST['sexo']);
                     $mascota->biografia=DB::escape($_POST['biografia']);
                     $mascota->fechanacimiento=DB::escape($_POST['fechanacimiento']);
                     $mascota->fechafallecimiento=DB::escape($_POST['fechafallecimiento']);
+                    $mascota->idusuario=$_POST['idusuario'];
                     $mascota->idraza=$_POST['idraza'];
-                    $mascota->idusuario=$usuario->id;
                     
-                    //mirar si nos piden eliminar la imagen actual
+                    var_dump($mascota);
+                    
+                    
+                    /*//mirar si nos piden eliminar la imagen actual
                     if(!empty($_POST['eliminarimagen'])){
                         //guarda la imagen antigua para borrarla si se actualiza bien la mascota
                         $imagenAntigua = $mascota->imagen;
@@ -155,17 +159,19 @@ class MascotaController{
                         $mascota->imagen=Upload::procesar($_FILES['imagen'],'img/mascotas',true,0,'image/*');
                     }
                     
-                    //intenta realizar la actualización de datos
+                    //intenta realizar la actualización de datos*/
                     if($mascota->actualizar()===false){
-                        unlink($mascota->imagen); //borra la imagen recién subida
+                        //unlink($mascota->imagen); //borra la imagen recién subida
                         throw new Exception("No se pudo actualizar mascota: $mascota->nombre");
                     }
                     
-                    if(!empty($imagenAntigua))
-                        unlink($imagenAntigua); //borra la imagen antigua
+                    /*if(!empty($imagenAntigua))
+                        unlink($imagenAntigua); //borra la imagen antigua*/
                         
                         // mostrar detalles de la mascota editada
-                        $this->show($mascota->id);
+                        //$this->show($mascota->id);
+                        $mensaje="Se ha actualizado correctamente";
+                        include 'views/exito.php';
     }
     
     //ELIMINAR SE HACE EN 2 PASOS

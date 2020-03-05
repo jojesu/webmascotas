@@ -27,8 +27,8 @@
     			   echo "<td>$mascota->nombre</td>";
     			   echo "<td>$mascota->sexo</td>";
     			   echo "<td>$mascota->biografia</td>";
-    			   echo "<td>$mascota->Nacimiento</td>";
-    			   echo "<td>$mascota->Fallecimiento</td>";
+    			   echo "<td>$mascota->fechanacimiento</td>";
+    			   echo "<td>$mascota->fechafallecimiento</td>";
     			  
     			   echo "<td>";
     			   echo " <a href='/mascota/show/$mascota->id'>Ver</a>";
