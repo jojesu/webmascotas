@@ -26,6 +26,34 @@ class FotoController{
         include 'views/foto/lista.php';
   
     }
+    //PASO 2: guarda la nueva mascota
+    public function store(){
+        // comprueba que llegue el formulario con los datos
+        if(empty($_POST['guardar']))
+            throw new Exception('No se recibieron los datos');
+            // comprueba si es admin, supervisor o usuario registrado
+            if(!Login::get()){
+                throw new Exception('Debes ser admin o usuario registrado');
+            }
+            
+            $usuario=Login::get(); //recupera el usuario actual
+            
+            $foto=new Foto();
+          
+            $foto->ubicacion=DB::escape($_POST['ubicacion']);
+            $foto->idmascota=DB::escape($_POST['idmascota']);
+            
+            // TRATAMIENTO DEL FICHERO IMAGEN
+            if(Upload::llegaFichero('imagen'))
+             $foto->fichero=Upload::procesar($_FILES['fichero'],'img/mascotas',true,0,'image/*');
+                
+                //muestra la vista de éxito
+                $mensaje="Guardado de la foto de la mascota $mascota->nombre correcto.";
+                
+                $usuario=Login::get(); //recupera el usuario actual
+                
+                include 'views/exito.php'; //mostrar éxito
+    }
         
     // muestra el formulario de confirmación de eliminación
     public function delete(int $id = 0){

@@ -10,7 +10,8 @@ class TipoController{
     
     //operación para listar todos los tipos de mascotas
     public function list(){
-        
+        $razas= Raza::get();
+        $tipos=Tipo::get();
         //cargar la vista del listado
         include 'views/tipo/lista.php';
     }
@@ -83,8 +84,9 @@ class TipoController{
     //PASO 1: muestra el formulario de edición de una mascota
     public function edit(int $id=0){
         
-        $usuario=Login::getUsuario(); //recupera el usuario actual
+        $usuario=Login::get(); //recupera el usuario actual
         $tipo = Tipo::getTipo($id);
+        $raza = Raza::get();
         
         if((!$usuario || $usuario->id!=$tipo->idusuario) && !Login::isAdmin())
             throw new Exception('No tienes permiso');
@@ -136,7 +138,7 @@ class TipoController{
     //PASO 1: muestra el formulario de confirmación de eliminación
     public function delete(int $id=0){
         
-        $usuario = Login::getUsuario(); //recupera el usuario actual
+        $usuario = Login::get(); //recupera el usuario actual
         $tipo = Tipo::getTipo($id);
         
         if((!$usuario || $usuario->id!=$tipo->idusuario) && !Login::isAdmin())
@@ -161,7 +163,7 @@ class TipoController{
             
             $id=intval($_POST['id']); //recuperar el id vía POST
             
-            $usuario = Login::getUsuario(); //recupera el usuario actual
+            $usuario = Login::get(); //recupera el usuario actual
             $tipo = Tipo::getMascota($id);
             
             if((!$usuario || $usuario->id!=$tipo->idusuario) && !Login::isAdmin())

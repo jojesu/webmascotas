@@ -2,7 +2,15 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Baja de usuario</title>
+		<title>Actualizar datos del usuario <?=$usuario->usuario?></title>
+		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+		<style>
+		  form label{
+		      display: inline-block;
+		      min-width: 100px;
+		      padding: 5px;
+		  }
+		</style>
 	</head>
 	
 	<body>
