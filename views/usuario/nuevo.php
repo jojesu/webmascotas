@@ -3,6 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Registro de usuarios</title>
+		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+		
 		<style>
 		  form label{
 		      display: inline-block;
@@ -16,45 +18,67 @@
 		<?php 
 		  (TEMPLATE)::header("Registro de usuarios");
 		  (TEMPLATE)::nav();
-		  (TEMPLATE)::login();
-		?>  
-		
-		<h2>Nuevo usuario</h2>
-		
-		<form method="post" action="/usuario/store">
-			<label>Usuario</label>
-			<input type="text" name="usuario">
-			<br>
-			<label>Clave</label>
-			<input type="password" name="clave">
-			<br>
-			<label>Nombre</label>
-			<input type="text" name="nombre">
-			<br>
-			<label>Primer apellido</label>
-			<input type="text" name="apellido1">
-			<br>
-			<label>Segundo apellido</label>
-			<input type="text" name="apellido2">
-			<br>
-			<label>Email</label>
-			<input type="email" name="email">
-			<br>
-			
-			 <?php if(Login::isAdmin()){ ?>
-			<h4>Operaciones solo para el admin</h4>
-			<label>Privilegio</label>
-			<input type="number" value="0" min="0" max="9999" name="privilegio">
-			<br>
-			<input type="checkbox" name="administrador" value="1">
-			<label>Conceder privilegio de administrador</label>
-			<br>
-         <?php } ?>
-
-			<input type="submit" name="guardar" value="Guardar">
-		</form>
-		<br>
-		<a href="/usuario/list">Volver al listado de usuarios</a>
+		?>  		
+     <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+              <div class="col-lg-7">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Crea una Cuenta</h1>
+                  </div>
+                  <form class="user" method="post" action="/usuario/store">
+                    <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control form-control-user" name="usuario" id="exampleFirstName" placeholder="Usuario">
+                      </div>
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control form-control-user" name="nombre" id="exampleFirstName" placeholder="Nombre">
+                      </div>
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control form-control-user" name="apellido1" id="exampleFirstName" placeholder="Apellido">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-user" name="apellido2" id="exampleLastName" placeholder="Apellido">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control form-control-user" name="email" id="exampleInputEmail" placeholder="Email">
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="password" class="form-control form-control-user" name="clave" id="exampleInputPassword" placeholder="Password">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                      </div>
+                    </div>
+                    <input type="submit" name="guardar" value="Guardar" class="btn btn-primary btn-user btn-block">
+                    <hr>
+                    <a href="index.html" class="btn btn-google btn-user btn-block">
+                      <i class="fab fa-google fa-fw"></i> Register with Google
+                    </a>
+                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                      <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                    </a>
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="small" href="/forgotpassword">¿Olvidaste tu Password?</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="/login">¿Ya tienes cuenta? Login!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </div>
 		
 		<?php 
 		  (TEMPLATE)::footer();
