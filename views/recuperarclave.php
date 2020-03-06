@@ -11,6 +11,9 @@
 		  }
 		</style>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    	<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">
+    	<link href="/css/estilos.css" rel="stylesheet">
 	</head>
 	
 	<body>

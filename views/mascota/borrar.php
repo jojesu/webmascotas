@@ -4,15 +4,15 @@
 		<meta charset="UTF-8">
 		<title>Borrar mascota</title>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
-		<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/bootstrap.min.css" rel="stylesheet">
     	<link href="/css/heroic-features.css" rel="stylesheet">
+    	<link href="/css/estilos.css" rel="stylesheet">
 	</head>
 	
 	<body>
 		<?php 
 		  (TEMPLATE)::header("Borrar mascota");
 		  (TEMPLATE)::nav();
-		  (TEMPLATE)::login();
 		?>  
 		<h2>Confirmar borrar mascota</h2>
 		<p><?="$mascota->nombre"?></p>
