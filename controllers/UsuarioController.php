@@ -10,9 +10,11 @@ class UsuarioController{
     
     // lista los usuarios
     public function list(){
-        
+        $usuario=Login::get();
+        var_dump($usuario);
         // solamente el administrador 
         if(!Login::isAdmin())
+            var_dump(Login::isAdmin());
             throw new Exception('No tienes permiso para hacer esto');
         
         $usuarios = Usuario::get();
@@ -32,6 +34,12 @@ class UsuarioController{
         // recuperar el usuario
         if(!$usuario = Usuario::getById($id)) 
             throw new Exception("No se pudo recuperar el usuario.");
+        
+        //le pasamos a la vivta un array con las mascotas del usuario
+        $mascotas = Mascota::mascotasUsuario($id);
+        
+        //le pasamos a la vivta un array con las foto de las mascotas del usuario
+        $fotos= Foto::getFotosMascota($id);
                     
         include 'views/usuario/detalles.php';
     }

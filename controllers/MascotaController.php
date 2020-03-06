@@ -12,7 +12,7 @@ class MascotaController{
     //operación para listar todas las mascotas
     public function list(){
         $mascotas=Mascota::get(); //recupera las mascotas
-        
+        $usuario = Login::get();  //recupera el usuario logeado
         
         //cargar la vista del listado
         include 'views/mascota/lista.php';

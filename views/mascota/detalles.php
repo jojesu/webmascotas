@@ -48,9 +48,10 @@
                     <p class="card-text"><b>Fecha Fallecimiento:</b> <?=$mascota->fechafallecimiento?></p>
                   </div>
                   <div class="card-footer">
-                    <a class="btn btn-primary" href="/mascota/edit/<?=$usuario->id?>">Editar mascota</a>
-        			<a class="btn btn-warning" href="/mascota/delete/<?=$usuario->id?>">Borrar mascota</a> 			
-        			<a class="btn btn-danger" href="/foto/list">Lista de mascotas</a>
+					 <?php 
+					 if(Login::get() && Login::get()->id==$mascota->idusuario || Login::hasPrivilege(500)){
+    			     echo "<td><a href='/mascota/edit/$mascota->id'><button class='btn btn-primary p-2 ml-2' >EDITAR</button></a></td>
+                     <td><a href='/mascota/delete/$mascota->id'><button class='btn btn-danger p-2 ml-2' >BORRAR</button></a></td>";}  ?>                
                   </div>
                 </div>
                 <form action="foto/store">

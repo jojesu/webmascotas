@@ -6,13 +6,40 @@ class Basic{
         <!-- Jumbotron Header -->
             <header class="my-4">
               <h4 class="display-4"><?=$pagina?>!</h4>
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor03">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
             </header>
         <?php }
         
         // pone el nav
         public static function nav(){?>
          <!-- Navigation -->
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
             <img src="/img/logo.jpg" width='50' height='50'>
               <a class="navbar-brand" href="/">WEBMASCOTAS</a>         
@@ -36,9 +63,7 @@ class Basic{
         		<?php }?>
                 </ul>
               </div>
-              <div class="collapse navbar-collapse bg-light">
               <?php (TEMPLATE)::login();?>
-              </div>
             </div>
           </nav>
         <?php } 
@@ -50,9 +75,10 @@ class Basic{
             
             // el enlace depende de si el usuario está identificado o no
            echo $identificado ?
-                "<li class='nav-item'>Hola <a class='nav-link' href='/usuario/show/$identificado->id'>$identificado->usuario</a>, 
-                    <a class='nav-link' href='/login/logout'>salir</a></li>" :
-                "<li class='nav-item'><a class='nav-link' href='/login'>Identificarse</a> - <a class='nav-link' href='/usuario/create'>Registro</a></li>";
+                " <a href='/usuario/show/$identificado->id'><button type='button' class='btn btn-primary p-2 ml-2' >Hola $identificado->usuario</button></a>
+                  <a href='/login/logout'><button type='button' class='btn btn-secondary p-2 ml-2'>Logout</button></a>":                   
+                 "<a href='/login'><button type='button' class='btn btn-primary p-2 ml-2' >Identificarse</button></a>
+                  <a href='/usuario/create'><button type='button' class='btn btn-secondary p-2 ml-2'>Registro</button></a>";
                 
         }
         

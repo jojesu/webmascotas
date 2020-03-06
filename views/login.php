@@ -40,7 +40,7 @@
                       <input type="text" name="usuario" required class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Usuario o Email">
                     </div>
                     <div class="form-group">
-                      <input type="pass!word" name="clave" required class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" name="clave" required class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
