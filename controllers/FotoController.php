@@ -86,11 +86,14 @@ class FotoController{
             //recuperar el identificador vía POST
             $id = empty($_POST['id'])? 0 : intval($_POST['id']);
             
+            $ruta=$_POST['fichero'];
             // borra el usuario de la BDD
             if(!Foto::borrar($id))
                 throw new Exception("No se pudo borrar la foto $id");
-                
-                $mensaje = "La foto ha sido borrada correctamente.";
+            
+                //si la imagen no es la imagen por defecto la borramos de la DB
+                if(unlink($ruta))                
+                    $mensaje .= " La foto ha sido borrada correctamente.";
                 
                 include 'views/exito.php'; //mostrar éxito
     }
