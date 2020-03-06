@@ -5,7 +5,10 @@
 		<title>Formulario de contacto</title>
 		
 		<script src="https://www.google.com/recaptcha/api.js"></script>
-		<link href="css/sb-admin-2.min.css" rel="stylesheet">
+		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    	<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">
+    	<link href="/css/estilos.css" rel="stylesheet">
 		<style>
 		  form label{
 		      display: inline-block;

@@ -3,6 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Registro de mascotas</title>
+		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    	<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">
+    	<link href="/css/estilos.css" rel="stylesheet">
 		<style>
 		  form label{
 		      display: inline-block;
@@ -16,7 +20,6 @@
 		<?php 
 		  (TEMPLATE)::header("Registro de mascotas");
 		  (TEMPLATE)::nav();
-		  (TEMPLATE)::login();
 		?>  
 		
 		<h2>Nueva mascota</h2>

@@ -4,6 +4,9 @@
 		<meta charset="UTF-8">
 		<title>Actualizar datos del usuario <?=$usuario->usuario?></title>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    	<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">
+    	<link href="/css/estilos.css" rel="stylesheet">
 		<style>
 		  form label{
 		      display: inline-block;
@@ -17,7 +20,6 @@
 		<?php 
 		  (TEMPLATE)::header("Baja de usuario");
 		  (TEMPLATE)::nav();
-		  (TEMPLATE)::login();
 		?>  
 		<h2>Confirmar baja de usuario</h2>
 		<p><?="$usuario->usuario ($usuario->email)"?></p>

@@ -5,12 +5,14 @@
     		<meta charset="UTF-8">
     		<title>Éxito</title>
     		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+        	<link href="/css/bootstrap.min.css" rel="stylesheet">
+        	<link href="/css/heroic-features.css" rel="stylesheet">
+        	<link href="/css/estilos.css" rel="stylesheet">
     	</head>
     	<body>
     		<?php 
     		  (TEMPLATE)::header("Éxito");
     		  (TEMPLATE)::nav();
-    		  (TEMPLATE)::login();
     		?>  
     		
     		<h2>Éxito en la operación solicitada</h2>
