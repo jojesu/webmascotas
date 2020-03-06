@@ -12,33 +12,19 @@
 		<?php 
 		  (TEMPLATE)::header("Detalles");
 		  (TEMPLATE)::nav();
-		  (TEMPLATE)::login();
 		?>  
 		
-		<h2>Detalles de la mascota</h2>
-<<<<<<< HEAD
-		<h3><?="$mascota->nombre"?></h3>
-		<?php		
-		$fotos=Foto::getFotosMascota($mascota->id);
-		
-		foreach ($fotos as $foto)
-		    echo "<div>
-                    <img src=/img/mascotas/'$foto->fichero' alt='$mascota->nombre'>
-                  </div>";
-		?>		
-		<p><b>Nombre:</b> <?=$mascota->nombre?></p>
-		<p><b>Sexo:</b> <?=$mascota->sexo?></p>
-		<p><b>Biografía:</b> <?=$mascota->biografia?></p>
-		<p><b>Fecha nacimiento:</b> <?=$mascota->fechanacimiento?></p>
-		<p><b>Fecha fallecimiento:</b> <?=$mascota->fechafallecimiento?></p>	
-=======
->>>>>>> branch 'master' of https://github.com/jojesu/webmascotas
-	
+		<h2 class="text-center">Detalles de la mascota</h2>
 		<div class="container">
         	<div class="row text-center mr-2">
               <div class="col-lg-12 col-md-5 mb-2">
                 <div class="card h-100">
-                  <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                <div class="row">
+				<?php 
+				    foreach ($fotos as $foto)
+				        echo "<img class='' src='/$foto->fichero' alt='' width='300' height='200'>";
+				?>                
+               </div> 
                   <div class="card-body">
                     <h4 class="card-title"><?="$mascota->nombre"?></h4>
                     <p class="card-text"><b>Nombre:</b> <?=$mascota->nombre?></p>
@@ -54,13 +40,6 @@
                      <td><a href='/mascota/delete/$mascota->id'><button class='btn btn-danger p-2 ml-2' >BORRAR</button></a></td>";}  ?>                
                   </div>
                 </div>
-                <form action="foto/store">
-                	<input type="hidden" value="<?=$mascota->id?>" name="idmascota">
-                	<label>Ubicación</label>
-                	<input type="text" name="ubicacion">
-                	<label>Introduzca la imagen de la mascota</label>
-                	<input type="file" name="fichero">
-                </form>
               </div>
             </div>
         </div>

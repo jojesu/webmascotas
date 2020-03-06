@@ -47,6 +47,7 @@
                     <p class='card-text'>Fecha Fallecimiento: $mascota->fechafallecimiento</p>                 
                     </div>
                     <div class='card-footer'>
+                    <a href='/mascota/show/$mascota->id' class='btn btn-secondary'>Ver Mascota</a>
                     <a href='/mascota/edit/$mascota->id' class='btn btn-primary'>Editar Mascota</a>
                     <a href='/mascota/delete/$mascota->id' class='btn btn-warning'>Borrar Mascota</a>
                     </div>

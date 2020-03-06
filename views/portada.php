@@ -13,25 +13,35 @@
     		<?php 
     		  (TEMPLATE)::header("Portada");
     		  (TEMPLATE)::nav();
-    		?>  
-    		
+    		?>    		
     		<h2>Bienvenido a nuestra app de mascotas</h2>
-    		<?php 
-    		  echo Login::get()? 
+    		<div class="alert alert-dismissible alert-success">
+  				<button type="button" class="close" data-dismiss="alert">&times;</button>
+  				<strong>
+  					<?php 
+    		          echo Login::get()? 
     		          "<p>Identificado como ".Login::get()->usuario."</p>":
     		          "<p>No estás identificado</p>";
-    		  
+    		          ?>
+    		   </strong>
+    		  <?php  
     		  echo Login::isAdmin()?
         		  "<p>Eres administrador todopoderoso</p>":
         		  "<p>No eres admin</p>";
-    		  
+    		  ?> <a href="<?="/usuario/show/".Login::get()->id?>" class="alert-link">
+    		  <?php     		  
     		  echo Login::hasPrivilege(500)?
-        		  "<p>Tienes nivel de privilegio 500 o sea, eres supervisor</p>":
-        		  "<p>Tienes menos de 500 de nivel de privilegio</p>";
-    		
+        		  "<p>Aqui puedes ver tu perfil</p>":
+        		  "<p>Podrias ver tu perfil pero no estas logeado</p>";  		
+    		 ?></a>.
+			</div>
+    		<?php 
+    		  $ultimasFotos= Foto::getUltimas(12);
+    		  foreach ($ultimasFotos as $foto)
+    		   echo "<img class='' src='/$foto->fichero' alt='' width='300' height='200'>";
     		?>
-    		<p>Esta es una aplicación de prueba para comprender el MVC.</p>
     		
+    		<p class='mb-10'>Esta es una aplicación de prueba para comprender el MVC.</p>    		
     		<?php 
     		  (TEMPLATE)::footer();
     		?>

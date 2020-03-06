@@ -38,6 +38,9 @@ class MascotaController{
             //recuperar la mascota con dicho código
             $mascota=Mascota::getMascota($id);
             
+            //recupera las fotos de la mascota
+            $fotos = Foto::getFotosMascota($id); 
+       
             //comprobar que la mascota existe
             if(!$mascota)
                 throw new Exception("No existe la mascota $id.");

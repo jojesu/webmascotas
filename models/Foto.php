@@ -27,6 +27,14 @@ class Foto{
         $consulta="SELECT * FROM fotos"; //preparar la consulta
         return DB::selectAll($consulta, self::class);
     }
+    // recuperar todas las fotos
+    public static function getUltimas(int $ultimas):array{
+        $consulta="SELECT * FROM fotos
+                    order by id desc
+                    limit $ultimas"; //preparar la consulta
+        return DB::selectAll($consulta, self::class);
+    }
+    
     
     // recuperar una foto concreta por id
     public static function getById(int $id):?Foto{

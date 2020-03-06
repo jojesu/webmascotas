@@ -18,11 +18,10 @@
 		<?php 
 		  (TEMPLATE)::header("Actualizar datos de la mascota");
 		  (TEMPLATE)::nav();
-		  (TEMPLATE)::login();
 		?>  
 				
-		<h2>Formulario de edición</h2>
-		<p><?="$mascota->nombre"?></p>
+		<h2 class='text-center'>Formulario de edición</h2>
+		<h4 class='text-center'><?="$mascota->nombre"?></h4>
 		
 		<?=empty( $GLOBALS['mensaje'])? "" : "<p>". $GLOBALS['mensaje']."</p>"?>
 
@@ -56,8 +55,7 @@
                           <label class="form-check-label" for="exampleRadios2">
                             Macho
                           </label>
-                        </div>
-                        
+                        </div>               
                         <div class="form-group">
                           <input type="text" class="form-control form-control-user" value="<?=$mascota->biografia?>" name="biografia" id="exampleInputEmail" placeholder="Email">
                         </div>
@@ -77,20 +75,29 @@
                     </div>
                   </form>
                   <hr>
+                  <div class="row">
+                  <div class="col-lg-9">
+                	<div class="p-5 text-center">
+                		<form class="user" method="post" action="/foto/store" enctype="multipart/form-data">
+                          <!-- id de la mascota a modificar -->
+                		  <input type="hidden" name="idmascota" value="<?=$mascota->id?>">
+                		  <label>SUBE UNA FOTO DE TU MASCOTA</label>
+                          <input type="file" name="fichero" class="btn btn-primary btn-user btn-block mb-5">
+                		  <label>UBICACIÓN:</label>                         
+                          <input type="text" class="form-control form-control-user mb-5" name="ubicacion">          
+                    	  <input type="submit" name="guardar" value="Subir" class="btn btn-primary btn-user btn-block mb-5">           		  
+                		</form>
+                	</div>
+                	</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div> 
-        
-      </div>					
-		
-		 
-		
-		
+        </div>       
+      </div>						
 		<?php 
 		  (TEMPLATE)::footer();
-		?>
-		
+		?>		
 	</body>
 </html>

@@ -26,7 +26,7 @@ class FotoController{
         include 'views/foto/lista.php';
   
     }
-    //PASO 2: guarda la nueva mascota
+    //PASO 2: guarda la nueva foto
     public function store(){
         // comprueba que llegue el formulario con los datos
         if(empty($_POST['guardar']))
@@ -34,8 +34,9 @@ class FotoController{
             // comprueba si es admin, supervisor o usuario registrado
             if(!Login::get()){
                 throw new Exception('Debes ser admin o usuario registrado');
-            }
+            }            
             
+            $mascota=Mascota::getMascota($_POST['idmascota']);//recuperamos la mascota para pasarselo a la vista de exito
             $usuario=Login::get(); //recupera el usuario actual
             
             $foto=new Foto();
@@ -44,9 +45,12 @@ class FotoController{
             $foto->idmascota=DB::escape($_POST['idmascota']);
             
             // TRATAMIENTO DEL FICHERO IMAGEN
-            if(Upload::llegaFichero('imagen'))
+            if(Upload::llegaFichero('fichero'))
              $foto->fichero=Upload::procesar($_FILES['fichero'],'img/mascotas',true,0,'image/*');
-                
+
+             if(!$foto->guardar())
+                 throw new Exception('No se pudo guardar en la base de datos');
+             
                 //muestra la vista de éxito
                 $mensaje="Guardado de la foto de la mascota $mascota->nombre correcto.";
                 
@@ -89,6 +93,15 @@ class FotoController{
                 $mensaje = "La foto ha sido borrada correctamente.";
                 
                 include 'views/exito.php'; //mostrar éxito
+    }
+    
+    //recuperamos las últimas fotos subidas
+    public static function getUltimasFotos(int $int){
+        
+        $ultimasfotos = Foto::getUltimas($ultimas);
+        
+        return $ultimasfotos;
+        
     }
     
 }
