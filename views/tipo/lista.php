@@ -20,7 +20,7 @@
 		  (TEMPLATE)::nav();
 		?>  
 		<h2>Lista de razas</h2>			
-		<table border="1">
+		<table class="table">
 			<tr>
 				<th>Nombre</th>
 				<th>Descripción</th>
@@ -39,7 +39,7 @@
     		}?>
 		</table>
 		<h2>Lista de tipos</h2>			
-		<table border="1">
+		<table class="table">
 			<tr>
 				<th>Nombre</th>
 				<th>Descripción</th>

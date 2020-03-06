@@ -3,16 +3,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Lista de usuarios</title>
+		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    	<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">
+    	<link href="/css/estilos.css" rel="stylesheet">
 	</head>
 	<body>
 		<?php 
 		  (TEMPLATE)::header("RAZAS");
 		  (TEMPLATE)::nav();
-		  (TEMPLATE)::login();
 		?>  
 		<h2>Lista de razas</h2>
 			
-		<table border="1">
+		<table class="table">
 			<tr>
 				<th>RAZA</th>
 				<th>DESCRIPCIÓN</th>
