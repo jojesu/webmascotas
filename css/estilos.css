@@ -1,0 +1,12 @@
+body{
+	padding-top:0;
+}
+
+header{
+	background-image:url('/img/fotoheader.jpg');
+	margin-top:0px;
+}
+
+header a{
+	color: white;
+}

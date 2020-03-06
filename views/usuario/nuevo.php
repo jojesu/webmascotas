@@ -4,7 +4,8 @@
 		<meta charset="UTF-8">
 		<title>Registro de usuarios</title>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
-		
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/css/heroic-features.css" rel="stylesheet">		
 		<style>
 		  form label{
 		      display: inline-block;
@@ -52,18 +53,9 @@
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="password" class="form-control form-control-user" name="clave" id="exampleInputPassword" placeholder="Password">
                       </div>
-                      <div class="col-sm-6">
-                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
-                      </div>
                     </div>
                     <input type="submit" name="guardar" value="Guardar" class="btn btn-primary btn-user btn-block">
                     <hr>
-                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Register with Google
-                    </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                    </a>
                   </form>
                   <hr>
                   <div class="text-center">
