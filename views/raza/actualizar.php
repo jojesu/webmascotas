@@ -20,8 +20,6 @@
 		  (TEMPLATE)::header("Actualizar la raza");
 		  (TEMPLATE)::nav();
 		?>  
-				
-		<h2>Formulario de edición</h2>
 		<div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -31,11 +29,12 @@
               <div class="col-lg-7">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Formulario de edición</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Formulario de edición de raza</h1>
                   </div>
                   <form class="user" method="post" action="/raza/update">
                   <!-- id de la mascota a modificar -->
                   	<input type="hidden" name="id" value="<?=$raza->id?>">
+                  	
 					<input type="hidden" name="idtipo" value="<?=$raza->idtipo?>">
         			
                     <div class="form-group">
@@ -47,7 +46,7 @@
                           <input type="text" class="form-control form-control-user" value="<?=$raza->descripcion?>" name="descripcion" id="exampleInputEmail" placeholder="Descripción">
                         </div>
                         
-                    	<input type="submit" name="actualizar" value="Actualizar" class="btn btn-primary btn-user btn-block">
+                    	<input type="submit" name="update" value="Actualizar" class="btn btn-primary btn-user btn-block">
                     	<hr>
                     	<a class="btn btn-primary" href="/raza/show/<?=$raza->id?>">Detalles</a> 
         				<a class="btn btn-primary" href="/raza/list">Volver al listado de razas</a>

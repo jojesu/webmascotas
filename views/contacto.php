@@ -60,7 +60,7 @@
                     <div class="form-group">
                       <textarea name="mensaje" required class="form-control form-control-user" row="3" col="5" aria-describedby="emailHelp" placeholder="Tu mensaje..."></textarea>
                     </div>
-                    <div class="g-recaptcha" data-sitekey="6LfHIt0UAAAAAFtWr9E4EMA-NOdY4uyUasqmzrNi">
+                    <div class="g-recaptcha mb-2" data-sitekey="6LfHIt0UAAAAAFtWr9E4EMA-NOdY4uyUasqmzrNi">
 					</div>
                     <input type="submit" name="enviar" value="Enviar" class="btn btn-primary btn-user btn-block">
                   </form>

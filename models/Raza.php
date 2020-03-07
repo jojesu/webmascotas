@@ -38,7 +38,7 @@ class Raza{
     
     
     //actualizar una raza
-    public function actualizar(){
+    public function update(){
     
         $consulta="UPDATE razas SET
                           nombre='$this->nombre',

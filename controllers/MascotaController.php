@@ -144,10 +144,7 @@ class MascotaController{
                     $mascota->fechanacimiento=DB::escape($_POST['fechanacimiento']);
                     $mascota->fechafallecimiento=DB::escape($_POST['fechafallecimiento']);
                     $mascota->idusuario=$_POST['idusuario'];
-                    $mascota->idraza=$_POST['idraza'];
-                    
-                    var_dump($mascota);
-                    
+                    $mascota->idraza=$_POST['idraza'];                   
                     
                     /*//mirar si nos piden eliminar la imagen actual
                     if(!empty($_POST['eliminarimagen'])){

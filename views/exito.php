@@ -1,5 +1,4 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html>
     	<head>
     		<meta charset="UTF-8">
@@ -15,12 +14,9 @@
     		  (TEMPLATE)::nav();
     		?>  
     		
-    		<h2>Éxito en la operación solicitada</h2>
-    
-    		<p class='exito'><?=$mensaje?></p>
     		
+   <br> 		
   <div class="container">
-
     <!-- Outer Row -->
     <div class="row justify-content-center">
 

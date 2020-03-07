@@ -14,8 +14,6 @@
 		  (TEMPLATE)::header("Borrar mascota");
 		  (TEMPLATE)::nav();
 		?>  
-		<h2>Confirmar borrar mascota</h2>
-		<p><?="$mascota->nombre"?></p>
 		<div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -24,11 +22,8 @@
               <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
               <div class="col-lg-7">
                 <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Formulario de edición</h1>
-                  </div>
                   <form class="user" method="post" action="/mascota/destroy">
-                  	<p>Confirmar el borrado de la mascota <?=$mascota->nombre?>.</p>
+                  	<h3>Confirmar el borrado de la mascota <?=$mascota->nombre?>.</h3>
 					<input type="hidden" name="id" value="<?=$id?>">
         			
                     <div class="form-group">

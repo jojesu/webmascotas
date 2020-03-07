@@ -14,7 +14,8 @@
     		<?php 
     		  (TEMPLATE)::header("Portada");
     		  (TEMPLATE)::nav();
-    		?>    		
+    		?> 
+    		<div class="container">   		
     		<h2>Bienvenido a nuestra app de mascotas</h2>
     		<div class="alert alert-dismissible alert-success">
   				<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -39,10 +40,11 @@
     		<?php 
     		  $ultimasFotos= Foto::getUltimas(12);
     		  foreach ($ultimasFotos as $foto)
-    		   echo "<img class='' src='/$foto->fichero' alt='' width='300' height='200'>";
+    		   echo "<img class='' src='/$foto->fichero' alt='' width='275' height='200'>";
     		?>
     		
-    		<p class='mb-10'>Esta es una aplicación de prueba para comprender el MVC.</p>    		
+    		<p class='mb-10'>Esta es una aplicación de prueba para comprender el MVC.</p>
+    		</div>    		
     		<?php 
     		  (TEMPLATE)::footer();
     		?>

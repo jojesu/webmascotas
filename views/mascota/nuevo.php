@@ -21,7 +21,7 @@
 		  (TEMPLATE)::header("Registro de mascotas");
 		  (TEMPLATE)::nav();
 		?>  
-		
+		<div class="container">
 		<h2>Nueva mascota</h2>
 		
 		<form method="post" action="/mascota/store">
@@ -54,7 +54,7 @@
 		</form>
 		<br>
 		<a href="/mascota/list">Volver al listado de mascotas</a>
-		
+		</div>
 		<?php 
 		  (TEMPLATE)::footer();
 		?>

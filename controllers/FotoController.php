@@ -33,7 +33,7 @@ class FotoController{
             throw new Exception('No se recibieron los datos');
             // comprueba si es admin, supervisor o usuario registrado
             if(!Login::get()){
-                throw new Exception('Debes ser admin o usuario registrado');
+                throw new Exception('Debes estar logueado');
             }            
             
             $mascota=Mascota::getMascota($_POST['idmascota']);//recuperamos la mascota para pasarselo a la vista de exito
@@ -64,7 +64,7 @@ class FotoController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(! (Login::isAdmin() || Login::hasPrivilege(500)|| Login::get()->id == $id))
             throw new Exception('No tienes los permisos necesarios');
             
             // recupera el usuario para mostrar sus datos en la vista
@@ -80,7 +80,7 @@ class FotoController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(! (Login::isAdmin() || Login::hasPrivilege(500) || Login::get()->id == $id))
             throw new Exception('No tienes los permisos necesarios');
             
             //recuperar el identificador vía POST

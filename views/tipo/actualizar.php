@@ -45,7 +45,7 @@
                       </div>
                     <input type="submit" name="actualizar" value="Actualizar" class="btn btn-primary btn-user btn-block">
                     <hr>
-                    
+                   </div> 
                   </form>
                   <hr>
                 </div>

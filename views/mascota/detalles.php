@@ -14,18 +14,18 @@
 		  (TEMPLATE)::header("Detalles");
 		  (TEMPLATE)::nav();
 		?>  
-		
+		<br>
 		<h2 class="text-center">Detalles de la mascota</h2>
 		<div class="container">
-        	<div class="row text-center mr-2">
+        	<div class="row">
               <div class="col-lg-12 col-md-5 mb-2">
-                <div class="card h-100">
-                <div class="row">
-				<?php 
-				    foreach ($fotos as $foto)
-				        echo "<img class='' src='/$foto->fichero' alt='' width='300' height='200'>";
-				?>                
-               </div> 
+                
+                    <div class="row">
+    				<?php 
+    				    foreach ($fotos as $foto)
+    				        echo "<img class='' src='/$foto->fichero' alt='' width='275' height='200'>";
+    				?>                
+                   </div> 
                   <div class="card-body">
                     <h4 class="card-title"><?="$mascota->nombre"?></h4>
                     <p class="card-text"><b>Nombre:</b> <?=$mascota->nombre?></p>
@@ -40,8 +40,8 @@
     			     echo "<td><a href='/mascota/edit/$mascota->id'><button class='btn btn-primary p-2 ml-2' >EDITAR</button></a></td>
                      <td><a href='/mascota/delete/$mascota->id'><button class='btn btn-danger p-2 ml-2' >BORRAR</button></a></td>";}  ?>                
                   </div>
-                </div>
               </div>
+              
             </div>
         </div>
 	

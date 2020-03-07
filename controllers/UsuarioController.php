@@ -10,14 +10,11 @@ class UsuarioController{
     
     // lista los usuarios
     public function list(){
-        $usuario=Login::get();
-        var_dump($usuario);
+        $usuarios = Usuario::get();
+        
         // solamente el administrador 
         if(!Login::isAdmin())
-            var_dump(Login::isAdmin());
             throw new Exception('No tienes permiso para hacer esto');
-        
-        $usuarios = Usuario::get();
         include 'views/usuario/lista.php'; 
     }
     

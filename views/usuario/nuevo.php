@@ -34,10 +34,10 @@
                   </div>
                   <form class="user" method="post" action="/usuario/store">
                     <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="col-sm-6 mb-3">
                         <input type="text" class="form-control form-control-user" name="usuario" id="exampleFirstName" placeholder="Usuario">
                       </div>
-                      <div class="col-sm-6 mb-3 mb-sm-0">
+                      <div class="col-sm-6 mb-3">
                         <input type="text" class="form-control form-control-user" name="nombre" id="exampleFirstName" placeholder="Nombre">
                       </div>
                       <div class="col-sm-6 mb-3 mb-sm-0">

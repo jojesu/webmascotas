@@ -19,16 +19,19 @@
 		<?php 
 		  (TEMPLATE)::header("Usuarios");
 		  (TEMPLATE)::nav();
-		?>  
+		?> 
+		<br>
+		<div class="container"> 
 		<h2>Lista de usuarios</h2>
 			
-		<table border="1">
+		<table class="table">
 			<tr>
 				<th>Usuario</th>
 				<th>Nombre</th>
 				<th>Apellidos</th>
 				<th>Operaciones</th>
 			</tr>
+			
     		<?php foreach($usuarios as $usuario){
     			   echo "<tr>";
     			   echo "<td>$usuario->usuario</td>";
@@ -42,6 +45,7 @@
     			   echo "</tr>";
     		}?>
 		</table>
+		</div>
 		<br>
 		<?php 
 		  (TEMPLATE)::footer();

@@ -39,7 +39,7 @@ class RazaController{
     
     
     
-    // muestra el formulario de nuevo usuario
+    // muestra el formulario de nueva raza
     public function create(){
         if(!Login::isAdmin())
             throw new Exception('No tienes permiso para hacer esto');
@@ -81,17 +81,23 @@ class RazaController{
         if(!(Login::isAdmin() || (Login::hasPrivilege(100))))
             throw new Exception('No tienes los permisos necesarios');
         
-       
+            
+        //Pasamos a la vista la raza
+        $raza = Raza::getById($id);
+        // recuperar el usuario
+        if(!$raza)
+            throw new Exception("No se pudo recuperar la raza.");
+   
                 
       // mostrar el formulario de edición
        include 'views/raza/actualizar.php';
     }
     
     
-    // aplica los cambios de un usuario
+    // aplica los cambios de raza
     public function update(){
         
-        //le pasamos las razas a la vista
+        //le pasamos la raza a la vista
         $raza = Raza::getById($_POST['id']);
         
         // esta operación solamente la puede hacer el administrador
@@ -100,12 +106,12 @@ class RazaController{
             throw new Exception('No tienes los permisos necesarios');
             
        // comprueba que llegue el formulario con los datos
-       if(empty($_POST['actualizar']))
+       if(empty($_POST['update']))
           throw new Exception('No se recibieron datos');
                 
-      // $id = intval($_POST['id']); // recuperar el id vía POST
+       $id = intval($_POST['id']); // recuperar el id vía POST
                 
-       // recuperar el usuario
+       // recuperar la raza
        if(!$raza = Raza::getById($id))
          throw new Exception("No existe la raza $id.");
                     
@@ -114,7 +120,7 @@ class RazaController{
        $raza->idtipo = $_POST['idtipo'];
                  
        // intenta realizar la actualización de datos
-       if($raza->actualizar()===false)
+       if($raza->update()===false)
           throw new Exception("No se pudo actualizar $raza->nombre");
                            
        // prepara un mensaje

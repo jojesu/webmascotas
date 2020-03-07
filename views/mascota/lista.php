@@ -12,7 +12,9 @@
 		<?php 
 		  (TEMPLATE)::header("Lista de mascotas");
 		  (TEMPLATE)::nav();
-		?>  
+		?> 
+		<div class="container">
+		<br>
 		<h2>Lista de mascotas</h2>
 			
 		<table class="table">
@@ -22,6 +24,7 @@
 				<th>Biografía</th>
 				<th>Nacimiento</th>
 				<th>Fallecimiento</th>
+				<th>Operaciones</th>
 			</tr>
     		<?php 
     		       foreach($mascotas as $mascota){
@@ -32,17 +35,17 @@
     			   echo "<td>$mascota->biografia</td>";
     			   echo "<td>$mascota->fechanacimiento</td>";
     			   echo "<td>$mascota->fechafallecimiento</td>";
-    			  
     			   echo "<td>";
-    			   echo " <a href='/mascota/show/$mascota->id'>Ver</a>";
+    			   echo "<a href='/mascota/show/$mascota->id'>Ver</a>";
     			   
     			   if(Login::get() && Login::get()->id==$mascota->idusuario || Login::hasPrivilege(500)){
-    			     echo "<td><a href='/mascota/edit/$mascota->id'>EDITAR</a></td>
-                     <td><a href='/mascota/delete/$mascota->id'>BORRAR</a></td>";}
+    			     echo " - <a href='/mascota/edit/$mascota->id'>EDITAR</a>";
+                     echo " - <a href='/mascota/delete/$mascota->id'>BORRAR</a>";}
     			   echo "</td>";
     			   echo "</tr>";
     		}?>
 		</table>
+		</div> 
 		<br>
 		<?php 
 		  (TEMPLATE)::footer();

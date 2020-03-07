@@ -14,8 +14,9 @@
 		  (TEMPLATE)::header("Detalles");
 		  (TEMPLATE)::nav();
 		?>  
-		
-	<h2 class="text-center">Detalles del usuario</h2>		
+	<br>	
+	<h2 class="text-center">Detalles del usuario</h2>
+			
 	<div class="container">
 	<div class="row text-center mr-2">
       <div class="col-lg-12 col-md-6 mb-4 text-center">
@@ -24,7 +25,6 @@
             <h4 class="card-title"><?="$usuario->usuario ($usuario->email)"?></h4>
             <p class="card-text"><b>Nombre:</b> <?=$usuario->nombre?></p>
             <p class="card-text"><b>Apellidos:</b> <?="$usuario->apellido1 $usuario->apellido2"?></p>
-            <p class="card-text"><b>Nombre:</b> <?=$usuario->nombre?></p>
             
           </div>
           <div class="card-footer">
@@ -35,6 +35,7 @@
       </div>
     </div>
     </div>
+    <div class="container">
     <h1 class="text-center">Tus mascotas</h1>
     <div class="row text-center">
     <?php 
@@ -50,13 +51,14 @@
                     <p class='card-text'>Fecha Fallecimiento: $mascota->fechafallecimiento</p>                 
                     </div>
                     <div class='card-footer'>
-                    <a href='/mascota/show/$mascota->id' class='btn btn-secondary'>Ver Mascota</a>
-                    <a href='/mascota/edit/$mascota->id' class='btn btn-primary'>Editar Mascota</a>
+                    <a href='/mascota/show/$mascota->id' class='btn btn-secondary mb-1'>Ver Mascota</a>
+                    <a href='/mascota/edit/$mascota->id' class='btn btn-primary mb-1'>Editar Mascota</a>
                     <a href='/mascota/delete/$mascota->id' class='btn btn-warning'>Borrar Mascota</a>
                     </div>
                 </div>
             </div>";
     ?>
+	</div>
 	</div>
 		<?php 
 		  (TEMPLATE)::footer();

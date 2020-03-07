@@ -20,9 +20,6 @@
 		  (TEMPLATE)::header("Actualizar datos de la mascota");
 		  (TEMPLATE)::nav();
 		?>  
-				
-		<h2 class='text-center'>Formulario de edición</h2>
-		<h4 class='text-center'><?="$mascota->nombre"?></h4>
 		
 		<?=empty( $GLOBALS['mensaje'])? "" : "<p>". $GLOBALS['mensaje']."</p>"?>
 
