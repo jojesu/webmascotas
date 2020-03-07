@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Actualizar datos del usuario <?=$usuario->usuario?></title>
+		<title>Borrar usuario <?=$usuario->usuario?></title>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
     	<link href="/css/bootstrap.min.css" rel="stylesheet">
     	<link href="/css/heroic-features.css" rel="stylesheet">
@@ -29,7 +29,7 @@
               <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
               <div class="col-lg-7">
                 <div class="p-5">
-                  <form class="user" method="post" action="usuario/destroy">
+                  <form class="user" method="post" action="/usuario/destroy">
                   	<h4>Confirmar el borrado del usuario <?=$usuario->nombre?>.</h4>
 					<input type="hidden" name="id" value="<?=$id?>">
         			

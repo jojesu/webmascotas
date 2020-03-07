@@ -96,6 +96,7 @@ class UsuarioController{
     
     // aplica los cambios de un usuario
     public function update(){ 
+        $id = intval($_POST['id']); // recuperar el id vía POST
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
@@ -103,10 +104,10 @@ class UsuarioController{
             throw new Exception('No tienes los permisos necesarios');
         
         // comprueba que llegue el formulario con los datos
-        if(empty($_POST['actualizar']))
+        if(empty($_POST['update']))
             throw new Exception('No se recibieron datos');
         
-        $id = intval($_POST['id']); // recuperar el id vía POST
+        
         
         // recuperar el usuario 
         if(!$usuario = Usuario::getById($id)) 
@@ -116,7 +117,6 @@ class UsuarioController{
         $usuario->nombre = DB::escape($_POST['nombre']);
         $usuario->apellido1 = DB::escape($_POST['apellido1']);
         $usuario->apellido2 = DB::escape($_POST['apellido2']);
-        $usuario->privilegio = intval($_POST['privilegio']);
         $usuario->administrador = empty($_POST['administrador'])? 0 : 1;
         $usuario->email = DB::escape($_POST['email']);
         
@@ -125,11 +125,11 @@ class UsuarioController{
             $usuario->clave = md5($_POST['clave']);
           
         // intenta realizar la actualización de datos
-        if($usuario->actualizar()===false)
+        if($usuario->update()===false)
             throw new Exception("No se pudo actualizar $usuario->usuario");
         
         // prepara un mensaje
-        $GLOBALS['mensaje'] = "Actualización del usuario $usuario->usuario correcta.";
+        //$GLOBALS['mensaje'] = "Actualización del usuario $usuario->usuario correcta.";
         
         // repite la operación edit, así mantiene la vista de edición.
         $this->edit($usuario->id); 
@@ -157,17 +157,21 @@ class UsuarioController{
     //elimina el usuario
     public function destroy(){
         
+        //recuperar el identificador vía POST
+        $id = empty($_POST['id'])? 0 : intval($_POST['id']);
+        
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
         if(! (Login::isAdmin() || Login::get()->id == $id))
             throw new Exception('No tienes los permisos necesarios');
-        
-        //recuperar el identificador vía POST
-        $id = empty($_POST['id'])? 0 : intval($_POST['id']);
+              
         
         // borra el usuario de la BDD
         if(!Usuario::borrar($id))
             throw new Exception("No se pudo dar de baja el usuario $id");
+           
+        if(!Login::isAdmin())
+            Login::clear();
         
         $mensaje = "El usuario ha sido dado de baja correctamente.";
         include 'views/exito.php'; //mostrar éxito

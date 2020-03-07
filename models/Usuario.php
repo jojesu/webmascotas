@@ -75,7 +75,7 @@
        
         
         //actualizar un usuario
-        public function actualizar(){
+        public function update(){
 
             $consulta="UPDATE usuarios SET
                           usuario='$this->usuario',

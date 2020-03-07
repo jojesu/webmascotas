@@ -33,7 +33,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Formulario de edición</h1>
                   </div>
-                  <form class="user" method="post" action="/usuario/store">
+                  <form class="user" method="post" action="/usuario/update">
                   <!-- id del usuario a modificar -->
 					<input type="hidden" name="id" value="<?=$usuario->id?>">
                     <div class="form-group row">
@@ -72,7 +72,7 @@
 		              echo "<label> Conceder privilegio de administrador</label>
         			<br><br>";
         			}?>
-                    <input type="submit" name="actualizar" value="Actualizar" class="btn btn-primary btn-user btn-block">
+                    <input type="submit" name="update" value="Actualizar" class="btn btn-primary btn-user btn-block">
                     <hr>
                     
                   </form>
