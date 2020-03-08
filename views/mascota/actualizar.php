@@ -74,7 +74,7 @@
                   </form>
                   <hr>
                   <div class="row">
-                  <div class="col-lg-9">
+                  <div class="col-lg-12">
                 	<div class="p-5 text-center">
                 		<form class="user" method="post" action="/foto/store" enctype="multipart/form-data">
                           <!-- id de la mascota a modificar -->

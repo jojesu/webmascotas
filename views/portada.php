@@ -16,8 +16,8 @@
     		  (TEMPLATE)::nav();
     		?> 
     		<div class="container">   		
-    		<h2>Bienvenido a nuestra app de mascotas</h2>
-    		<div class="alert alert-dismissible alert-success">
+    		<h2 style="margin:1em 0em;">Bienvenido a nuestra app de mascotas</h2>
+    		<!--<div class="alert alert-dismissible alert-success">
   				<button type="button" class="close" data-dismiss="alert">&times;</button>
   				<strong>
   					<?php 
@@ -36,14 +36,14 @@
         		  "<p>Aqui puedes ver tu perfil</p>":
         		  "<p>Podrias ver tu perfil pero no estas logeado</p>";  		
     		 ?></a>.
-			</div>
+			</div>-->
     		<?php 
     		  $ultimasFotos= Foto::getUltimas(12);
     		  foreach ($ultimasFotos as $foto)
     		   echo "<img class='' src='/$foto->fichero' alt='' width='275' height='200'>";
     		?>
     		
-    		<p class='mb-10'>Esta es una aplicación de prueba para comprender el MVC.</p>
+    		<!--<p class='mb-10'>Esta es una aplicación de prueba para comprender el MVC.</p>-->
     		</div>    		
     		<?php 
     		  (TEMPLATE)::footer();

@@ -79,8 +79,7 @@ class MascotaController{
             $mascota->fechanacimiento=DB::escape($_POST['fechanacimiento']);
             $mascota->fechafallecimiento=DB::escape($_POST['fechafallecimiento']);
             $mascota->idraza=$_POST['idraza'];
-            $mascota->idusuario=$usuario->id;
-            
+            $mascota->idusuario=$usuario->id;         
           
             // TRATAMIENTO DEL FICHERO IMAGEN
             /*if(Upload::llegaFichero('imagen'))
@@ -105,7 +104,7 @@ class MascotaController{
         $mascota = Mascota::getMascota($id);
         
         
-        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())
+        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
             throw new Exception('No tienes permiso');
             
             //comprobar que me llega el identificador
@@ -135,7 +134,7 @@ class MascotaController{
                                 
                 $usuario = Login::get(); //recupera el usuario actual
                              
-                if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())
+                if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
                     throw new Exception('No tienes permiso');
                     
                     $mascota->nombre=DB::escape($_POST['nombre']);
@@ -184,7 +183,7 @@ class MascotaController{
         $usuario = Login::get(); //recupera el usuario actual
         $mascota = Mascota::getMascota($id);
         
-        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())
+        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
             throw new Exception('No tienes permiso');
             
             //comprobar que me llega el identificador
@@ -201,7 +200,7 @@ class MascotaController{
     //PASO 2: elimina la mascota
     public function destroy(){
         //comprobar que me lleguen los datos del formulario y no por URL
-        if(empty($_POST['confirmarborrado']))
+        if(empty($_POST['borrar']))
             throw new Exception('No está permitido entrar desde la URL');
             
             $id=intval($_POST['id']); //recuperar el id vía POST
@@ -209,7 +208,7 @@ class MascotaController{
             $usuario = Login::get(); //recupera el usuario actual
             $mascota = Mascota::getMascota($id);
             
-            if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin())
+            if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
                 throw new Exception('No tienes permiso');
                 
                 //intenta borrar la mascota de la BDD

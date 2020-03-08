@@ -46,7 +46,7 @@ class Basic{
             
             // el enlace depende de si el usuario está identificado o no
            echo $identificado ?
-                " <a href='/usuario/show/$identificado->id'><button style='color:light-grey;' type='button' class='btn btn-secondary p-2 ml-2' >Hola $identificado->usuario</button></a>
+                " <a href='/usuario/show/$identificado->id'><button style='color:light-grey;' type='button' class='btn btn-secondary p-2 ml-2' >Su perfil de $identificado->usuario</button></a>
                   <a href='/login/logout'><button type='button' class='btn btn-secondary p-2 ml-2'>Logout</button></a>":                   
                  "<a href='/login'><button type='button' class='btn btn-primary p-2 ml-2' >Identificarse</button></a>
                   <a href='/usuario/create'><button type='button' class='btn btn-secondary p-2 ml-2'>Registro</button></a>";
