@@ -38,7 +38,7 @@ class Tipo{
         return DB::delete($consulta);
     }
     
-    public function actualizar(){ //actualizar una mascota
+    public function update(){ //actualizar una mascota
         //preparar consulta
         $consulta="UPDATE mascotas SET
                     nombre='$this->nombre',

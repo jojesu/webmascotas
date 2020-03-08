@@ -7,6 +7,7 @@
     	<link href="/css/bootstrap.min.css" rel="stylesheet">
     	<link href="/css/heroic-features.css" rel="stylesheet">
     	<link href="/css/estilos.css" rel="stylesheet">
+    	<script src="js/jquery-3.4.1.min.js"></script>
 	</head>
 	<body>
 	
@@ -48,5 +49,12 @@
 		<?php 
 		  (TEMPLATE)::footer();
 		?>
+<script>
+    $(document).ready(function(){
+        $('img').click(function(){
+             $(this).remove();
+        });
+    });
+ </script>
 	</body>
 </html>

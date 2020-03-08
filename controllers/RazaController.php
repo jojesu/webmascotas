@@ -78,7 +78,7 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(!(Login::isAdmin() || (Login::hasPrivilege(100))))
+        if(!Login::isAdmin()) 
             throw new Exception('No tienes los permisos necesarios');
         
             
@@ -101,7 +101,7 @@ class RazaController{
         $raza = Raza::getById($_POST['id']);
         
         // esta operación solamente la puede hacer el administrador
-        // o bien el usuario propietario de los datos que se muestran
+        
         if(! (Login::isAdmin() || (Login::hasPrivilege(100))))
             throw new Exception('No tienes los permisos necesarios');
             

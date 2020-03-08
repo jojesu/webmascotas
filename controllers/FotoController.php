@@ -48,15 +48,15 @@ class FotoController{
             if(Upload::llegaFichero('fichero'))
              $foto->fichero=Upload::procesar($_FILES['fichero'],'img/mascotas',true,0,'image/*');
 
-             if(!$foto->guardar())
+            if(!$foto->guardar())
                  throw new Exception('No se pudo guardar en la base de datos');
              
-                //muestra la vista de éxito
-                $mensaje="Guardado de la foto de la mascota $mascota->nombre correcto.";
-                
-                $usuario=Login::get(); //recupera el usuario actual
-                
-                include 'views/exito.php'; //mostrar éxito
+            //muestra la vista de éxito
+            $mensaje="Guardado de la foto de la mascota $mascota->nombre correcto.";
+            
+            $usuario=Login::get(); //recupera el usuario actual
+            
+            include 'views/exito.php'; //mostrar éxito
     }
         
     // muestra el formulario de confirmación de eliminación
@@ -106,6 +106,8 @@ class FotoController{
         return $ultimasfotos;
         
     }
+    
+    
     
 }
 

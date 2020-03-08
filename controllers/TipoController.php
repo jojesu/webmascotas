@@ -84,54 +84,53 @@ class TipoController{
     //PASO 1: muestra el formulario de edición de una mascota
     public function edit(int $id=0){
         
-        $usuario=Login::get(); //recupera el usuario actual
-        $tipo = Tipo::getTipo($id);
-        $raza = Raza::get();
-        
-        if((!$usuario || $usuario->id!=$tipo->idusuario) && !Login::isAdmin())
-            throw new Exception('No tienes permiso');
+        if(!Login::isAdmin())
+            throw new Exception('No tienes los permisos necesarios');         
             
-            //comprobar que me llega el identificador
-            if(!$id)
-                throw new Exception("No se indicó el tipo de mascota a editar.");
-                
-                //comprobar que el tipo de mascota existe
-                if(!$tipo)
-                    throw new Exception("No existe el tipo de mascota $id.");
-                    
-                    //cargar la vista del formulario
-                    include 'views/tipo/actualizar.php';
+        //Pasamos a la vista e tipo
+        $tipo = Tipo::getTipo($id);
+        
+        // recuperar el tipo
+        if(!$tipo)
+            throw new Exception("No se pudo recuperar el tipo.");
+      
+        //cargar la vista del formulario
+        include 'views/tipo/actualizar.php';
     }
     
     //PASO 2: aplica los cambios del tipo de mascota
     public function update(){
-        //comprueba que llegue el formulario con los datos y no por URL
-        if(empty($_POST['actualizar']))
-            throw new Exception('No está permitido entrar por la URL');
+        //le pasamos la raza a la vista
+        $tipo = Tipo::getTipo($_POST['id']);
+        
+        // esta operación solamente la puede hacer el administrador
+        
+        if(! (Login::isAdmin() || (Login::hasPrivilege(100))))
+            throw new Exception('No tienes los permisos necesarios');
             
-            //recuperar el anuncio de la BDD
-            $tipo = Tipo::getTipo(intval($_POST['id']));
+            // comprueba que llegue el formulario con los datos
+            if(empty($_POST['update']))
+                throw new Exception('No se recibieron datos');
+                
+        $id = intval($_POST['id']); // recuperar el id vía POST
+        
+        // recuperar la raza
+        if(!$tipo = Tipo::getTipo($id))
+            throw new Exception("No existe el tipo $id.");
             
-            //comprobar que existe la mascota
-            if(!$tipo)
-                throw new Exception('No existe el tipo de mascota');
+            $tipo->nombre = DB::escape($_POST['nombre']);
+            $tipo->descripcion = DB::escape($_POST['descripcion']);
+            
+            // intenta realizar la actualización de datos
+            if($tipo->update()===false)
+                throw new Exception("No se pudo actualizar $tipo->nombre");
                 
-                $id=intval($_POST['id']); //recuperar el id vía POST
-                
-                $usuario = Login::getUsuario(); //recupera el usuario actual
-                $tipo = Tipo::getTipo($id);
-                
-                if((!$usuario || $usuario->id!=$tipo->idusuario) && !Login::isAdmin())
-                    throw new Exception('No tienes permiso');
-                    
-                    $tipo = new Tipo();  //nueva  tipo de mascota, la info viene por POST
-                    $tipo->nombre=DB::escape($_POST['nombre']);
-                    $tipo->descripcion=DB::escape($_POST['descripcion']);
-                    
-                        // mostrar detalles del tipo de mascota editada
-                        $this->show($tipo->id);
+            // prepara un mensaje
+            $GLOBALS['mensaje'] = "Actualización del tipo $tipo->nombre correctamente.";
+            
+            // repite la operación edit, así mantiene la vista de edición.
+            $this->edit($edit->id);
     }
-    
     //ELIMINAR SE HACE EN 2 PASOS
     //(si queremos hacerlo con formulario de confirmación)
     
@@ -143,17 +142,17 @@ class TipoController{
         
         if((!$usuario || $usuario->id!=$tipo->idusuario) && !Login::isAdmin())
             throw new Exception('No tienes permiso');
+        
+        //comprobar que me llega el identificador
+        if(!$id)
+            throw new Exception("No se indicó el tipo de mascota a borrar.");
             
-            //comprobar que me llega el identificador
-            if(!$id)
-                throw new Exception("No se indicó el tipo de mascota a borrar.");
+            //comprobar que la mascota existe
+            if(!$tipo)
+                throw new Exception("No existe el tipo de mascota con id $id.");
                 
-                //comprobar que la mascota existe
-                if(!$tipo)
-                    throw new Exception("No existe el tipo de mascota con id $id.");
-                    
-                    //ir al formulario de confirmación
-                    include 'views/tipo/borrar.php';
+                //ir al formulario de confirmación
+                include 'views/tipo/borrar.php';
     }
     //PASO 2: elimina el tipo de mascota
     public function destroy(){
@@ -173,10 +172,10 @@ class TipoController{
                 if(!Tipo::borrar($id))
                     throw new Exception("No se pudo borrar");
                     
-                    //mostrar la vista de éxito
-                    $mensaje="Borrado correcto.";
-                    
-                    include 'views/exito.php'; //mostrar éxito
+            //mostrar la vista de éxito
+            $mensaje="Borrado correcto.";
+            
+            include 'views/exito.php'; //mostrar éxito
     }
     
     public function filtered(){

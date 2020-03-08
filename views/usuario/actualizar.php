@@ -36,6 +36,7 @@
                   <form class="user" method="post" action="/usuario/update">
                   <!-- id del usuario a modificar -->
 					<input type="hidden" name="id" value="<?=$usuario->id?>">
+					
                     <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-3">
                         <input type="text" name="usuario" value="<?=$usuario->usuario?>" class="form-control form-control-user" id="exampleFirstName" placeholder="Usuario">
@@ -62,6 +63,7 @@
                       </div>
                     </div>
                     <?php if(Login::isAdmin()){
+                        
                     echo "<h4>Operaciones solo para el admin</h4>
         			<label>Privilegio</label>
         			<input type='number' min='0' max='9999' name='privilegio' 
@@ -71,7 +73,9 @@
         			<?php (empty($usuario->administrador))? '' : ' checked';
 		              echo "<label> Conceder privilegio de administrador</label>
         			<br><br>";
-        			}?>
+                    }else{?>
+                    <input type='hidden' name='privilegio' value='0'>
+                    <?php }?>
                     <input type="submit" name="update" value="Actualizar" class="btn btn-primary btn-user btn-block">
                     <hr>
                     
