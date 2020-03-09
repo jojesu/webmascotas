@@ -11,10 +11,10 @@ class UsuarioController{
     // lista los usuarios
     public function list(){
         $usuarios = Usuario::get();
-        
         // solamente el administrador 
-        if(!Login::isAdmin())
+        if(!(Login::get() || Login::hasPrivilege(500)))
             throw new Exception('No tienes permiso para hacer esto');
+        
         include 'views/usuario/lista.php'; 
     }
     
@@ -25,7 +25,7 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(! (Login::hasPrivilege(100)) || !(Usuario::getById($id)))
             throw new Exception('No tienes los permisos necesarios');
         
         // recuperar el usuario
@@ -82,7 +82,7 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(! (Login::hasPrivilege(500)) || Login::get()->id == $id)
             throw new Exception('No tienes los permisos necesarios');
         
         // recuperar el usuario
@@ -146,7 +146,7 @@ class UsuarioController{
         
          // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
             throw new Exception('No tienes los permisos necesarios');
         
         // recupera el usuario para mostrar sus datos en la vista
@@ -165,7 +165,7 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
             throw new Exception('No tienes los permisos necesarios');
               
         

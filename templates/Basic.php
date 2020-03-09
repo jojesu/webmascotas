@@ -23,7 +23,7 @@ class Basic{
                     <?php if(Login::get()){?>
             			<li class="nav-item"><a href="/mascota/create"  class="nav-link">Crear nueva Mascota</a></li>
             		<?php }?>
-            		<?php if(Login::isAdmin()){?>           		
+            		<?php if(Login::isAdmin()||Login::hasPrivilege(500)){?>           		
                 			<li class="nav-item"><a href="/usuario/list" class="nav-link">Lista de usuarios</a></li>           		        	
                 			<li class="nav-item"><a href="/tipo/list" class="nav-link">Lista de razas y Tipos</a></li>
             		<?php }?>

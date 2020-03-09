@@ -18,15 +18,21 @@
 		<br>
 		<h2 class="text-center">Detalles de la mascota</h2>
 		<div class="container">
-        	<div class="row">
-              <div class="col-lg-12 col-md-5 mb-2">
-                
-                    <div class="row">
-    				<?php 
-    				    foreach ($fotos as $foto)
-    				        echo "<img class='' src='/$foto->fichero' alt='' width='275' height='200'>";
-    				?>                
-                   </div> 
+        	<div class="row text-center">
+              <div class="col-lg-12 col-md-5 mb-2"> 
+                <div class="row">
+    				<?php
+    				var_dump($fotosmascota);
+    				foreach($fotosmascota as $foto)
+    				echo "<div class='card-body'>
+                           <a href='/foto/delete/$foto->id'>DELETE</a>
+                              <a class='btn btn-danger mb-3' href='/foto/delete/$foto->id'>Borrar foto</a>                                        
+                              <figure class='mb-4 p-30'>
+                              <img class='imagendetalle' src='/$foto->fichero' alt=''><br>
+                              <figcaptation>$foto->ubicacion</figcaptation>
+                              </figure>
+                          </div>";?>             
+                 </div> 
                   <div class="card-body">
                     <h4 class="card-title"><?="$mascota->nombre"?></h4>
                     <p class="card-text"><b>Nombre:</b> <?=$mascota->nombre?></p>
@@ -49,12 +55,5 @@
 		<?php 
 		  (TEMPLATE)::footer();
 		?>
-<script>
-    $(document).ready(function(){
-        $('img').click(function(){
-             $(this).remove();
-        });
-    });
- </script>
 	</body>
 </html>

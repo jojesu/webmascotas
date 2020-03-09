@@ -84,7 +84,7 @@ class TipoController{
     //PASO 1: muestra el formulario de edición de una mascota
     public function edit(int $id=0){
         
-        if(!Login::isAdmin())
+        if(! (Login::hasPrivilege(1000)))
             throw new Exception('No tienes los permisos necesarios');         
             
         //Pasamos a la vista e tipo
@@ -105,7 +105,7 @@ class TipoController{
         
         // esta operación solamente la puede hacer el administrador
         
-        if(! (Login::isAdmin() || (Login::hasPrivilege(100))))
+        if(! (Login::hasPrivilege(1000)))
             throw new Exception('No tienes los permisos necesarios');
             
             // comprueba que llegue el formulario con los datos
@@ -118,9 +118,10 @@ class TipoController{
         if(!$tipo = Tipo::getTipo($id))
             throw new Exception("No existe el tipo $id.");
             
+            $tipo->id= $_POST['id'];
             $tipo->nombre = DB::escape($_POST['nombre']);
             $tipo->descripcion = DB::escape($_POST['descripcion']);
-            
+          
             // intenta realizar la actualización de datos
             if($tipo->update()===false)
                 throw new Exception("No se pudo actualizar $tipo->nombre");
@@ -129,7 +130,7 @@ class TipoController{
             $GLOBALS['mensaje'] = "Actualización del tipo $tipo->nombre correctamente.";
             
             // repite la operación edit, así mantiene la vista de edición.
-            $this->edit($edit->id);
+            $this->edit($tipo->id);
     }
     //ELIMINAR SE HACE EN 2 PASOS
     //(si queremos hacerlo con formulario de confirmación)
@@ -140,7 +141,7 @@ class TipoController{
         $usuario = Login::get(); //recupera el usuario actual
         $tipo = Tipo::getTipo($id);
         
-        if((!$usuario || $usuario->id!=$tipo->idusuario) && !Login::isAdmin())
+        if(! (Login::hasPrivilege(1000)))
             throw new Exception('No tienes permiso');
         
         //comprobar que me llega el identificador
@@ -157,17 +158,17 @@ class TipoController{
     //PASO 2: elimina el tipo de mascota
     public function destroy(){
         //comprobar que me lleguen los datos del formulario y no por URL
-        if(empty($_POST['confirmarborrado']))
+        if(empty($_POST['borrar']))
             throw new Exception('No está permitido entrar desde la URL');
             
             $id=intval($_POST['id']); //recuperar el id vía POST
             
             $usuario = Login::get(); //recupera el usuario actual
-            $tipo = Tipo::getMascota($id);
             
-            if((!$usuario || $usuario->id!=$tipo->idusuario) && !Login::isAdmin())
+            if(! (Login::hasPrivilege(1000)))
                 throw new Exception('No tienes permiso');
-                
+            $id=intval($_POST['id']); 
+            var_dump($id);
                 //intenta borrar el tipo de la BDD
                 if(!Tipo::borrar($id))
                     throw new Exception("No se pudo borrar");

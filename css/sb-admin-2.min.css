@@ -25,8 +25,19 @@
   background-size: cover;
  }
 
-.bg-register-image{
-  background: url("https://soyunperro.com/wp-content/uploads/perrosusto.jpg.webp");
+.bg-mascotacreate-image{
+  background: url("https://i.pinimg.com/originals/e8/7e/7f/e87e7fef4c57df59c931c0b80b9d3ba5.jpg");
   background-position: center;
   background-size: cover;
  } 
+ 
+ .bg-register-image{
+  background: url("https://i.pinimg.com/474x/d4/9d/d4/d49dd4f6df29f2a78c7eeccaa9f3250e.jpg");
+  background-position: center;
+  background-size: cover;
+ }
+ 
+ .imagendetalle{
+	max-width: 275px;
+	max-height: 200 px; 
+ }

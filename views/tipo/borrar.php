@@ -12,18 +12,29 @@
 		<?php 
 		  (TEMPLATE)::header("Borrar tipo de mascota");
 		  (TEMPLATE)::nav();
-		?>  
-		<h2>Confirmar borrar tipo de mascota</h2>
-		<p><?="$tipo->nombre"?></p>
-		
-		<form method="post" action="/tipo/destroy">
-			<p>Confirmar el borrado del tipo de mascota <?=$tipo->nombre?>.</p>
-			<input type="hidden" name="id" value="<?=$id?>">
-			<input type="submit" name="borrar" value="Borrar">
-		</form>
-		<br>
-		<a href="/tipo/show/<?=$tipo->id?>">Detalles</a> -
-		<a href="/tipo/list">Volver al listado de tipos de mascotas</a>
+		?> 
+		<h2 class='text-center'>Confirmar el borrado del tipo de mascota <?=$tipo->nombre?></h2>
+		<div class="container">
+    	<div class="row text-center mr-2">
+          <div class="col-lg-12 col-md-6 mb-4 text-center">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title"><?="$tipo->nombre"?></h4>
+                <p class="card-text"><b>Nombre:</b> <?=$tipo->nombre?></p>
+                <p class="card-text"><b>Descripción:</b> <?="$tipo->descripcion"?></p>           
+              </div>
+              <div class="card-footer">
+				<form method="post" action="/tipo/destroy/<?=$id?>">
+				<p>Confirmar el borrado del tipo de mascota .</p>
+				<input type="hidden" name="id" value="<?=$id?>">
+				<input class="btn btn-danger" type="submit" name="borrar" value="Borrar">
+				</form>    			
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+		<a class='text-center' href="/tipo/list"><h3>Volver al listado de tipos de mascotas</h3></a>
 		
 		<?php 
 		  (TEMPLATE)::footer();

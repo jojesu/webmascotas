@@ -26,7 +26,7 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+              <div class="col-lg-5 d-none d-lg-block bg-mascotacreate-image"></div>
               <div class="col-lg-7">
                 <div class="p-5">
                   <div class="text-center">
@@ -50,7 +50,7 @@
                           </label>
                         </div>               
                         <div class="form-group">
-                          <input type="text" class="form-control form-control-user" name="biografia" id="exampleInputEmail" placeholder="Email">
+                          <input type="text" class="form-control form-control-user" name="biografia" id="exampleInputEmail" placeholder="Biografia">
                         </div>                       
                         <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">

@@ -43,6 +43,7 @@
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="text" name="descripcion" value="<?=$tipo->descripcion?>" class="form-control form-control-user" id="exampleFirstName">
                       </div>
+                      </div>
                     <input type="submit" name="update" value="Actualizar" class="btn btn-primary btn-user btn-block">
                     <hr>
                     

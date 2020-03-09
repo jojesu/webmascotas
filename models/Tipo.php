@@ -40,10 +40,10 @@ class Tipo{
     
     public function update(){ //actualizar una mascota
         //preparar consulta
-        $consulta="UPDATE mascotas SET
+        $consulta="UPDATE tipos SET
                     nombre='$this->nombre',
                     descripcion='$this->descripcion'
-                   WHERE id=$this->id";
+                    WHERE id=$this->id";
         return DB::update($consulta);
     }
     

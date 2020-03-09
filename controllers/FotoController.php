@@ -59,28 +59,55 @@ class FotoController{
             include 'views/exito.php'; //mostrar éxito
     }
         
-    // muestra el formulario de confirmación de eliminación
+/*    // muestra el formulario de confirmación de eliminación
     public function delete(int $id = 0){
-        
+        $usuario = Login::get(); //recupera el usuario actual
+        //recuperamos el id de la mascota
+        $mascota = Mascota::getMascota($id);
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::hasPrivilege(500)|| Login::get()->id == $id))
+        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
             throw new Exception('No tienes los permisos necesarios');
-            
-            // recupera el usuario para mostrar sus datos en la vista
-            //if(!$usuario = Usuario::getById($id))
-              //throw new Exception("No existe el usuario $id.");
+           //$id= $foto->id;
+            //$foto = Foto::getById($id);
+           //recuperamos la foto para pasarla a la vista
                 
                 // carga la vista de confirmación de borrado
                 include 'views/foto/borrar.php';
     }
-    
+*/
+       //********************* borrar foto*************************************///
+        
+       public function delete(int $id){
+           
+            $foto = Foto::getById($id);
+            
+         
+            $usuario = Login::get(); //recupera el usuario actual
+            //recuperamos el id de la mascota
+            $mascota = Mascota::getMascota($id);   var_dump($mascota);
+            // esta operación solamente la puede hacer el administrador
+            // o bien el usuario propietario de los datos que se muestran
+            if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
+                throw new Exception('No tienes los permisos necesarios');
+            if(!$id)
+                throw new Exception('No se indicó la foto');
+  
+                    include 'views/foto/borrar.php';
+        }
+
     //elimina la foto
     public function destroy(){
         
+        if(empty($_POST['borrar']))
+            throw new Exception('No se indicó la foto a borrar');
+        
+        $usuario = Login::get(); //recupera el usuario actual
+        $mascota = Mascota::getMascota($_POST['idmascota']); //recupera la mascota
+        
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::hasPrivilege(500) || Login::get()->id == $id))
+        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
             throw new Exception('No tienes los permisos necesarios');
             
             //recuperar el identificador vía POST
@@ -96,6 +123,7 @@ class FotoController{
                     $mensaje .= " La foto ha sido borrada correctamente.";
                 
                 include 'views/exito.php'; //mostrar éxito
+               
     }
     
     //recuperamos las últimas fotos subidas
@@ -104,6 +132,15 @@ class FotoController{
         $ultimasfotos = Foto::getUltimas($ultimas);
         
         return $ultimasfotos;
+        
+    }
+    
+    //recupera la fotos de por idmascota
+    public static function getFotosMascota(int $id):?array{
+        
+        $fotosmascota= Foto::getFotosMascota($id);
+        
+        return $fotosmascota;
         
     }
     

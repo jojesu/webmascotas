@@ -13,17 +13,25 @@
 		<?php 
 		  (TEMPLATE)::header("Detalles");
 		  (TEMPLATE)::nav();
-		?>  
-		
+		?> 
 		<h2>Detalles del tipo de mascota</h2>
-		<h3><?="$tipo->nombre"?></h3>
-		
-		<p><b>Nombre:</b> <?=$tipo->nombre?></p>
-		<p><b>Descipción:</b> <?=$tipo->descripcion?></p>	
-	
-		<a href="/tipo/edit/<?=$tipo->id?>">Editar tipo de mascota</a> - 
-		<a href="/tipo/delete/<?=$tipo->id?>">Borrar tipo de mascota</a> - 
-		<a href="/tipo/list">Lista de tipos de mascotas</a> 
+		<div class="container">
+    	<div class="row text-center mr-2">
+          <div class="col-lg-12 col-md-6 mb-4 text-center">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title"><?="$tipo->nombre"?></h4>
+                <p class="card-text"><b>Nombre:</b> <?=$tipo->nombre?></p>
+                <p class="card-text"><b>Descripción:</b> <?="$tipo->descripcion"?></p>           
+              </div>
+              <div class="card-footer">
+                <a class="btn btn-primary" href="/tipo/edit/<?=$tipo->id?>">Editar tipo</a>
+    			<a class="btn btn-danger" href="/tipo/delete/<?=$tipo->id?>">Borrar tipo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
 	
 		<?php 
 		  (TEMPLATE)::footer();

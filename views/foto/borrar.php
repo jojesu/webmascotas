@@ -14,13 +14,14 @@
 		  (TEMPLATE)::header("Borrar una foto");
 		  (TEMPLATE)::nav();
 		?>  
-		<h2>Confirmar borrado de la foto</h2>
-			
+		<h2>Confirmar borrado de la foto</h2>		
 		<form method="post" action="/foto/destroy">
 			<p>Confirmar el borrado de la foto <?=$foto->id?>.</p>
-			<img src="<?=$foto->fichero?>">
+			<img class='imagendetalle' src='/<?=$foto->fichero?>' alt=''>
 			<input type="hidden" name="id" value="<?=$foto->id?>">
-			<input type="submit" name="borrar" value="Borrar">
+			<input type="hidden" name="idmascota" value="<?=$foto->idmascota?>">
+			<input type='hidden' name='fichero' value='<?=$foto->fichero?>'>
+			<input type="submit" name="borrar" value="borrar">
 		</form>
 		<br>
 		<a href="/foto/list">Volver al listado de fotos</a>

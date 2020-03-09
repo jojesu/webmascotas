@@ -39,7 +39,7 @@ class MascotaController{
             $mascota=Mascota::getMascota($id);
             
             //recupera las fotos de la mascota
-            $fotos = Foto::getFotosMascota($id); 
+            $fotosmascota = Foto::getFotosMascota($id); 
        
             //comprobar que la mascota existe
             if(!$mascota)
