@@ -10,8 +10,7 @@ class RazaController{
     public function list(){
         
         // solamente el administrador
-        //if(!Login::isAdmin())
-         //   throw new Exception('No tienes permiso para hacer esto');
+        
             
             $razas = Raza::get();
             include 'views/raza/lista.php';
@@ -24,7 +23,7 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
+        
             throw new Exception('No tienes los permisos necesarios');
             
             //Pasamos a la vista la raza
@@ -41,7 +40,7 @@ class RazaController{
     
     // muestra el formulario de nueva raza
     public function create(){
-        if(! (Login::hasPrivilege(1000)))
+        if(!Login::isAdmin() || !Login::hasPrivilege(500))
             throw new Exception('No tienes permiso para hacer esto');
         
         //le pasamos a la vista la lista de tipos para el select
@@ -78,7 +77,7 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::hasPrivilege(1000)))
+        if(!Login::isAdmin() || !Login::hasPrivilege(500))
             throw new Exception('No tienes los permisos necesarios');
         
             
@@ -102,7 +101,7 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         
-        if(! (Login::hasPrivilege(1000)))
+        if(!Login::isAdmin() || !Login::hasPrivilege(500))
             throw new Exception('No tienes los permisos necesarios');
             
        // comprueba que llegue el formulario con los datos
@@ -135,7 +134,7 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::hasPrivilege(1000)))
+        if(!Login::isAdmin() || !Login::hasPrivilege(500))
             throw new Exception('No tienes los permisos necesarios');
             
             // recupera el usuario para mostrar sus datos en la vista
@@ -151,7 +150,7 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::hasPrivilege(1000)))
+        if(!Login::isAdmin() || !Login::hasPrivilege(500))
             throw new Exception('No tienes los permisos necesarios');
             
             //recuperar el identificador vía POST

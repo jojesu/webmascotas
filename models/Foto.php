@@ -15,7 +15,7 @@ class Foto{
     }
     
     public static function getFotosMascota(int $id):array{
-        $consulta="SELECT f.fichero, f.ubicacion, m.nombre, m.id  FROM fotos f
+        $consulta="SELECT f.fichero, f.ubicacion, m.nombre, f.id  FROM fotos f
                     LEFT JOIN mascotas m ON m.id=f.idmascota           
                     WHERE idmascota=$id"; //preparar la consulta
         return DB::selectAll($consulta, self::class);

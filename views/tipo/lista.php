@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Actualizar datos del usuario <?=$usuario->usuario?></title>
+		<title>Actualizar razas y tipos</title>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
     	<link href="/css/bootstrap.min.css" rel="stylesheet">
     	<link href="/css/heroic-features.css" rel="stylesheet">

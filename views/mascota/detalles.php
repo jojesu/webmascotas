@@ -22,10 +22,8 @@
               <div class="col-lg-12 col-md-5 mb-2"> 
                 <div class="row">
     				<?php
-    				var_dump($fotosmascota);
     				foreach($fotosmascota as $foto)
     				echo "<div class='card-body'>
-                           <a href='/foto/delete/$foto->id'>DELETE</a>
                               <a class='btn btn-danger mb-3' href='/foto/delete/$foto->id'>Borrar foto</a>                                        
                               <figure class='mb-4 p-30'>
                               <img class='imagendetalle' src='/$foto->fichero' alt=''><br>

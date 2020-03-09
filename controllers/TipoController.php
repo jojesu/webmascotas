@@ -84,7 +84,7 @@ class TipoController{
     //PASO 1: muestra el formulario de edición de una mascota
     public function edit(int $id=0){
         
-        if(! (Login::hasPrivilege(1000)))
+        if(!Login::isAdmin() || !Login::hasPrivilege(500))
             throw new Exception('No tienes los permisos necesarios');         
             
         //Pasamos a la vista e tipo
@@ -105,7 +105,7 @@ class TipoController{
         
         // esta operación solamente la puede hacer el administrador
         
-        if(! (Login::hasPrivilege(1000)))
+        if(!Login::isAdmin() || !Login::hasPrivilege(500))
             throw new Exception('No tienes los permisos necesarios');
             
             // comprueba que llegue el formulario con los datos

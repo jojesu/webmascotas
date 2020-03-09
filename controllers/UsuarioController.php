@@ -25,8 +25,6 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::hasPrivilege(100)) || !(Usuario::getById($id)))
-            throw new Exception('No tienes los permisos necesarios');
         
         // recuperar el usuario
         if(!$usuario = Usuario::getById($id)) 
@@ -82,8 +80,8 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::hasPrivilege(500)) || Login::get()->id == $id)
-            throw new Exception('No tienes los permisos necesarios');
+        //if(! (Login::hasPrivilege(500)) || Login::get()->id == $id)
+          //  throw new Exception('No tienes los permisos necesarios');
         
         // recuperar el usuario
         if(!$usuario = Usuario::getById($id)) 
@@ -146,8 +144,8 @@ class UsuarioController{
         
          // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
-            throw new Exception('No tienes los permisos necesarios');
+        //if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
+         //   throw new Exception('No tienes los permisos necesarios');
         
         // recupera el usuario para mostrar sus datos en la vista
         if(!$usuario = Usuario::getById($id)) 
@@ -165,8 +163,8 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
-            throw new Exception('No tienes los permisos necesarios');
+        //if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
+         //   throw new Exception('No tienes los permisos necesarios');
               
         
         // borra el usuario de la BDD

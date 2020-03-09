@@ -45,8 +45,8 @@ class MascotaController{
             if(!$mascota)
                 throw new Exception("No existe la mascota $id.");
                 
-                //cargar la vista de detalles
-                include 'views/mascota/detalles.php';
+            //cargar la vista de detalles
+            include 'views/mascota/detalles.php';
     }
     
     //GUARDAR SE HACE EN 2 PASOS
