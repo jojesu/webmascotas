@@ -14,7 +14,7 @@
 		  (TEMPLATE)::header("Detalles");
 		  (TEMPLATE)::nav();
 		?> 
-		<h2>Detalles del tipo de mascota</h2>
+		<h2 class="text-center">Detalles del tipo de mascota</h2>
 		<div class="container">
     	<div class="row text-center mr-2">
           <div class="col-lg-12 col-md-6 mb-4 text-center">

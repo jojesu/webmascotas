@@ -22,7 +22,7 @@
 		?> 
 		<div class="container"> 
 			<br>
-    		<h2>Lista de razas</h2>			
+    		<h2 class='text-center'>Lista de razas</h2>			
     		<table class="table">
     			<tr>
     				<th>Nombre</th>
@@ -41,7 +41,7 @@
         			   echo "</tr>";
         		}?>
     		</table>
-    		<h2>Lista de tipos</h2>			
+    		<h2 class='text-center'>Lista de tipos</h2>			
     		<table class="table">
     			<tr>
     				<th>Nombre</th>
@@ -60,6 +60,13 @@
         			   echo "</tr>";
         		}?>
     		</table>
+    		<?php 
+					 if(Login::get() || Login::hasPrivilege(500)){
+    			     echo "<div class='text-center row mb-3'>
+                        <a href='/tipo/create'><button class='text-center btn btn-primary p-2 ml-2' >NUEVO TIPO DE MASCOTA</button></a>
+                        <a href='/raza/create'><button class='text-center btn btn-primary p-2 ml-2' >NUEVA RAZA</button></a>
+                        </div>";}  ?> 
+    		
 		</div>
 		<br>
 		<?php 

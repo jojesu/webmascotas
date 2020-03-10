@@ -13,7 +13,7 @@
 		  (TEMPLATE)::header("RAZAS");
 		  (TEMPLATE)::nav();
 		?>  
-		<h2>Lista de razas</h2>
+		<h2 class="text-center">Lista de razas</h2>
 			
 		<table class="table">
 			<tr>

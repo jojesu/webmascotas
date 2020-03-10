@@ -40,8 +40,9 @@ class RazaController{
     
     // muestra el formulario de nueva raza
     public function create(){
-        if(!Login::isAdmin() || !Login::hasPrivilege(500))
-            throw new Exception('No tienes permiso para hacer esto');
+        
+        //if(!Login::isAdmin() || !Login::hasPrivilege(100))
+         //   throw new Exception('No tienes permiso para hacer esto');
         
         //le pasamos a la vista la lista de tipos para el select
         $tipos = Tipo::get();  
@@ -55,7 +56,7 @@ class RazaController{
         // comprueba que llegue el formulario con los datos
         if(empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
-            
+           
             $raza = new Raza(); //crear la nueva raza
             
             $raza->nombre = DB::escape($_POST['nombre']);
@@ -77,8 +78,8 @@ class RazaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(!Login::isAdmin() || !Login::hasPrivilege(500))
-            throw new Exception('No tienes los permisos necesarios');
+        //if(!Login::isAdmin() || !Login::hasPrivilege(500))
+         //   throw new Exception('No tienes los permisos necesarios');
         
             
         //Pasamos a la vista la raza

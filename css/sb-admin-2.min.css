@@ -41,3 +41,9 @@
 	max-width: 275px;
 	max-height: 200 px; 
  }
+ 
+ .bg-tiponew-image{
+  background: url("https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/pyr/55520750c0ea197b3fd512a5/bostezo-perro.jpg");
+  background-position: center;
+  background-size: cover;
+ }

@@ -6,12 +6,11 @@ class Raza{
     //METODOS
     // METODOS DEL CRUD
     
-    public static function guardar(){
-   $consulta="INSERT INTO razas(nombre, descripcion, idtipo)
+    public function guardar(){
+    $consulta="INSERT INTO razas(nombre, descripcion, idtipo)
                        VALUES('$this->nombre','$this->descripcion', $this->idtipo)";
                        
         return DB::insert($consulta); //conectar y ejecutar
-                return DB::insert($consulta); //conectar y ejecutar
     }
     
     // recuperar todos los razas
@@ -56,7 +55,7 @@ class Raza{
     
     //__toString
     public function __toString():string{
-        return "$this->id: $this->nombre $this->descripcion";
+        return "$this->id, $this->nombre, $this->descripcion";
     }
     
     

@@ -21,8 +21,8 @@
 		  (TEMPLATE)::header("Nueva Raza");
 		  (TEMPLATE)::nav();
 		?>  
-		
-	   <div class="container">
+	   <h2 class='text-center'>Nueva Raza</h2>
+	   <div class="container mb-3">
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
@@ -35,10 +35,10 @@
                   </div>
                   <form class="user" method="post" action="/raza/store">                   
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" name="nombre" id="exampleInputEmail" placeholder="Nombre">
+                      <input type="text" class="form-control form-control-user" name="nombre" placeholder="Nombre">
                     </div>
                     <div class="form-group">
-                      <input type="textarea" class="form-control form-control-user" name="descripcion" id="exampleInputEmail" placeholder="Descripción">
+                      <textarea rows="2" cols="5" class="form-control form-control-user" name="descripcion" id="exampleInputEmail" placeholder="Descripción"></textarea>
                     </div>
                     <div class="row">
                         <label class="col-md-4">Tipo:</label>
@@ -59,7 +59,6 @@
             </div>
           </div>
         </div>
-    
       </div>
 			
 		<?php 

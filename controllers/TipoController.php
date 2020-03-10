@@ -46,7 +46,7 @@ class TipoController{
     //GUARDAR SE HACE EN 2 PASOS
     //PASO 1: muestra el formulario de nuevo tipo
     public function create(){
-        if(!Login::getUsuario()){
+        if(!Login::get()){
             throw new Exception('Debes ser admin, supervisor o usuario registrado');
         }
         
@@ -59,11 +59,11 @@ class TipoController{
         if(empty($_POST['guardar']))
             throw new Exception('No se recibieron los datos');
             // comprueba si es admin, supervisor o usuario registrado
-            if(!Login::getUsuario()){
+            if(!Login::get()){
                 throw new Exception('Debes ser admin o usuario registrado');
             }
             
-            $usuario=Login::getUsuario(); //recupera el usuario actual
+            $usuario=Login::get(); //recupera el usuario actual
             
             $tipo = new Tipo();  //nueva  tipo de mascota, la info viene por POST
             $tipo->nombre=DB::escape($_POST['nombre']);
@@ -75,7 +75,7 @@ class TipoController{
                     //muestra la vista de éxito
                     $mensaje="Guardado del tipo de mascota $tipo->nombre correcto.";
                     
-                    $usuario=Login::getUsuario(); //recupera el usuario actual
+                    $usuario=Login::get(); //recupera el usuario actual
                     
                     include 'views/exito.php'; //mostrar éxito
     }
@@ -84,8 +84,8 @@ class TipoController{
     //PASO 1: muestra el formulario de edición de una mascota
     public function edit(int $id=0){
         
-        if(!Login::isAdmin() || !Login::hasPrivilege(500))
-            throw new Exception('No tienes los permisos necesarios');         
+        //if(!Login::isAdmin() || !Login::hasPrivilege(500))
+          //  throw new Exception('No tienes los permisos necesarios');         
             
         //Pasamos a la vista e tipo
         $tipo = Tipo::getTipo($id);
@@ -105,8 +105,8 @@ class TipoController{
         
         // esta operación solamente la puede hacer el administrador
         
-        if(!Login::isAdmin() || !Login::hasPrivilege(500))
-            throw new Exception('No tienes los permisos necesarios');
+        //if(!Login::isAdmin() || !Login::hasPrivilege(500))
+          //  throw new Exception('No tienes los permisos necesarios');
             
             // comprueba que llegue el formulario con los datos
             if(empty($_POST['update']))

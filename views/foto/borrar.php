@@ -23,10 +23,10 @@
             <div class="row">
               <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
               <div class="col-lg-7">
-                <div class="p-5">
+                <div class="p-5 text-center">
                   <form class="user" method="post" action="/foto/destroy">
-                  	<h4>Confirmar el borrado de la foto <?=$foto->id?>.</h4>
-                      	<img class='imagendetalle' src='/<?=$foto->fichero?>' alt=''>
+                  	<h4 class='text-center'>Confirmar el borrado de la foto <?=$foto->id?>.</h4>
+                      	<img class='imagendetalle text-center' src='/<?=$foto->fichero?>' alt=''>
             			<input type="hidden" name="id" value="<?=$foto->id?>">
             			<input type="hidden" name="idmascota" value="<?=$foto->idmascota?>">
             			<input type='hidden' name='fichero' value='<?=$foto->fichero?>'>

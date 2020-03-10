@@ -98,7 +98,13 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(!(Login::isAdmin()))
+            throw new Exception('No eres admin');
+        
+        if(!(Login::get()->id == $id))
+            throw new Exception('No es tu perfil');
+            
+        if(!(Login::hasPrivilege(500)))
             throw new Exception('No tienes los permisos necesarios');
         
         // comprueba que llegue el formulario con los datos
@@ -170,11 +176,12 @@ class UsuarioController{
         // borra el usuario de la BDD
         if(!Usuario::borrar($id))
             throw new Exception("No se pudo dar de baja el usuario $id");
-           
-        if(!Login::isAdmin())
+            
+        if(!Login::isAdmin()||!Login::hasPrivilege(500))
             Login::clear();
         
         $mensaje = "El usuario ha sido dado de baja correctamente.";
+        
         include 'views/exito.php'; //mostrar éxito
     }   
 }   
