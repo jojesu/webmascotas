@@ -18,6 +18,7 @@ header a{
 
 header a:hover{
 	color: black;	
+	text-shadow: 2px 2px white;
 }
 
 .derecha{

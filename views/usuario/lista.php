@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Actualizar datos del usuario <?=$usuario->usuario?></title>
+		<script src="https://kit.fontawesome.com/b96ccb0f2a.js" crossorigin="anonymous"></script>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
     	<link href="/css/bootstrap.min.css" rel="stylesheet">
     	<link href="/css/heroic-features.css" rel="stylesheet">
@@ -24,8 +25,8 @@
 		<div class="container"> 
 		<h2>Lista de usuarios</h2>
 			
-		<table class="table">
-			<tr>
+		<table class="table table-hover">
+			<tr class="table-active">
 				<th>Usuario</th>
 				<th>Nombre</th>
 				<th>Apellidos</th>
@@ -38,9 +39,9 @@
     			   echo "<td>$usuario->nombre</td>";
     			   echo "<td>$usuario->apellido1 $usuario->apellido2</td>";
     			   echo "<td>";
-    			   echo " <a href='/usuario/show/$usuario->id'>Ver</a>";
-    			   echo "-<a href='/usuario/edit/$usuario->id'>Actualizar</a>";
-    			   echo "-<a href='/usuario/delete/$usuario->id'>Borrar</a>";
+    			   echo " <a href='/usuario/show/$usuario->id'><i class='fas fa-search' style='color:black'></i></a>";
+    			   echo " - <a href='/usuario/edit/$usuario->id'><i class='fas fa-edit' style='color:black'></i></a>";
+    			   echo " - <a href='/usuario/delete/$usuario->id'><i class='fas fa-trash-alt' style='color:black'></i></a>";
     			   echo "</td>";
     			   echo "</tr>";
     		}?>
