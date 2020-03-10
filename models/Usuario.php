@@ -87,8 +87,7 @@
                           administrador=$this->administrador,
                           email='$this->email',
                           imagen='$this->imagen'
-                        WHERE id=$this->id";
-        
+                          WHERE id=$this->id";
             return DB::update($consulta);
         }
         

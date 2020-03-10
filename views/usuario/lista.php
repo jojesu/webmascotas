@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Actualizar datos del usuario <?=$usuario->usuario?></title>
+		<title>Actualizar datos de usuarios</title>
 		<script src="https://kit.fontawesome.com/b96ccb0f2a.js" crossorigin="anonymous"></script>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
     	<link href="/css/bootstrap.min.css" rel="stylesheet">

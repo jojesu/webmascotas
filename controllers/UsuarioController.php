@@ -5,6 +5,9 @@ class UsuarioController{
     
     // operación por defecto
     public function index(){
+        if(!login::isAdmin())
+            throw new Exception('Debes ser administrador');
+        
         $this->list(); // listado de usuarios
     }
     
@@ -12,7 +15,7 @@ class UsuarioController{
     public function list(){
         $usuarios = Usuario::get();
         // solamente el administrador 
-        if(!(Login::get() || Login::hasPrivilege(500)))
+        if(!login::isAdmin())
             throw new Exception('No tienes permiso para hacer esto');
         
         include 'views/usuario/lista.php'; 
@@ -25,7 +28,8 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        
+        if(! (Login::isAdmin() || Login::get()->id == $id))
+            throw new Exception('No tienes los permisos necesarios');
         // recuperar el usuario
         if(!$usuario = Usuario::getById($id)) 
             throw new Exception("No se pudo recuperar el usuario.");
@@ -81,7 +85,8 @@ class UsuarioController{
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
         //if(! (Login::hasPrivilege(500)) || Login::get()->id == $id)
-          //  throw new Exception('No tienes los permisos necesarios');
+        if(! (Login::isAdmin() || Login::get()->id == $id))
+            throw new Exception('No tienes los permisos necesarios');
         
         // recuperar el usuario
         if(!$usuario = Usuario::getById($id)) 
@@ -115,7 +120,7 @@ class UsuarioController{
         $usuario->nombre = DB::escape($_POST['nombre']);
         $usuario->apellido1 = DB::escape($_POST['apellido1']);
         $usuario->apellido2 = DB::escape($_POST['apellido2']);
-        $usuario->privilegio = $_POST['privilegio'];
+        $usuario->privilegio = empty($_POST['privilegio'])? 0 : intval($_POST['privilegio']);
         $usuario->administrador = empty($_POST['administrador'])? 0 : 1;
         $usuario->email = DB::escape($_POST['email']);
         
@@ -128,7 +133,7 @@ class UsuarioController{
             throw new Exception("No se pudo actualizar $usuario->usuario");
         
         // prepara un mensaje
-        //$GLOBALS['mensaje'] = "Actualización del usuario $usuario->usuario correcta.";
+        // $GLOBALS['mensaje'] = "Actualización del usuario $usuario->usuario correcta.";
         
         // repite la operación edit, así mantiene la vista de edición.
         //$this->edit($usuario->id);
@@ -144,8 +149,8 @@ class UsuarioController{
         
          // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        //if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
-         //   throw new Exception('No tienes los permisos necesarios');
+        if(! (Login::isAdmin() || Login::get()->id == $id))
+            throw new Exception('No tienes los permisos necesarios');
         
         // recupera el usuario para mostrar sus datos en la vista
         if(!$usuario = Usuario::getById($id)) 
@@ -163,8 +168,8 @@ class UsuarioController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        //if(! (Login::hasPrivilege(1000)) || Login::get()->id == $id)
-         //   throw new Exception('No tienes los permisos necesarios');
+        if(! (Login::isAdmin() || Login::get()->id == $id))
+            throw new Exception('No tienes los permisos necesarios');
               
         
         // borra el usuario de la BDD
