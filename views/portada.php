@@ -37,6 +37,7 @@
         		  "<p>Podrias ver tu perfil pero no estas logeado</p>";  		
     		 ?></a>.
 			</div>-->
+			<div class="container">
     		<?php 
     		  $ultimasFotos= Foto::getUltimas(12);
     		  foreach ($ultimasFotos as $foto)
@@ -44,7 +45,8 @@
     		?>
     		
     		<!--<p class='mb-10'>Esta es una aplicación de prueba para comprender el MVC.</p>-->
-    		</div>    		
+    		</div> 
+    		</div>  		
     		<?php 
     		  (TEMPLATE)::footer();
     		?>

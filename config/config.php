@@ -9,7 +9,7 @@
     define('TEMPLATE','Basic');
     
     // PARAMETROS DE CONFIGURACION BDD 
-    define('DB_HOST','localhost');    // host
+    define('DB_HOST','10.199.26.185');    // host
 
     define('DB_USER','alumne');       // usuario
 
