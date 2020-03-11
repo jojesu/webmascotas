@@ -99,12 +99,10 @@ class MascotaController{
     //ACTUALIZAR SE HACE EN 2 PASOS
     //PASO 1: muestra el formulario de edición de una mascota
     public function edit(int $id=0){
-        
         $usuario = Login::get(); //recupera el usuario actual
         $mascota = Mascota::getMascota($id);
         
-        
-        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
+        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(500))
             throw new Exception('No tienes permiso');
             
             //comprobar que me llega el identificador
@@ -134,7 +132,7 @@ class MascotaController{
                                 
                 $usuario = Login::get(); //recupera el usuario actual
                              
-                if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
+                if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(500))
                     throw new Exception('No tienes permiso');
                     
                     $mascota->nombre=DB::escape($_POST['nombre']);
@@ -183,7 +181,7 @@ class MascotaController{
         $usuario = Login::get(); //recupera el usuario actual
         $mascota = Mascota::getMascota($id);
         
-        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
+        if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(500))
             throw new Exception('No tienes permiso');
             
             //comprobar que me llega el identificador
@@ -208,7 +206,7 @@ class MascotaController{
             $usuario = Login::get(); //recupera el usuario actual
             $mascota = Mascota::getMascota($id);
             
-            if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(100))
+            if((!$usuario || $usuario->id!=$mascota->idusuario) && !Login::isAdmin() && !Login::hasPrivilege(500))
                 throw new Exception('No tienes permiso');
                 
                 //intenta borrar la mascota de la BDD

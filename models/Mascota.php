@@ -82,7 +82,7 @@ class Mascota{
     }
     
     public function __toString():string{  //__toString
-        return "$this->id, '$this->nombre', '$this->sexo', $this->fechanacimiento, '$this->fechafallecimiento'";
+        return "$this->id, '$this->nombre', '$this->sexo', $this->fechanacimiento, '$this->fechafallecimiento' $this->idusuario";
     }
     
     //recuperar mascotas con un filtro avanzado

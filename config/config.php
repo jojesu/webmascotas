@@ -13,8 +13,10 @@
 
     define('DB_USER','alumne');       // usuario
 
-    define('DB_USER','root');       // usuario
+   // define('DB_USER','root');       // usuario
 
+   // define('DB_HOST','10.199.26.185');    // host
+    //define('DB_USER','alumne');       // usuario
     define('DB_PASS','');             // password
     define('DB_NAME','webmascotas');   // base de datos
     define('DB_CHARSET','utf8');      // codificación
