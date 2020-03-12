@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Actualizar la raza <?=$raza->nombre?></title>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
     	<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -48,8 +49,8 @@
                         
                     	<input type="submit" name="update" value="Actualizar" class="btn btn-primary btn-user btn-block">
                     	<hr>
-                    	<a class="btn btn-primary" href="/raza/show/<?=$raza->id?>">Detalles</a> 
-        				<a class="btn btn-primary" href="/raza/list">Volver al listado de razas</a>
+                    	<a class="btn btn-primary mb-2" href="/raza/show/<?=$raza->id?>">Detalles</a>
+        				<a class="btn btn-primary mb-2" href="/raza/list">Volver al listado de razas</a>
                     </div>
                   </form>
                   <hr>

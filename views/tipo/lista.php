@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Actualizar razas y tipos</title>
 		<script src="https://kit.fontawesome.com/b96ccb0f2a.js" crossorigin="anonymous"></script>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
@@ -21,9 +22,11 @@
 		  (TEMPLATE)::header("Usuarios");
 		  (TEMPLATE)::nav();
 		?> 
-		<div class="container"> 
+		 
 			<br>
-    		<h2>Lista de razas</h2>			
+			<div class="container">
+    		<h2>Lista de razas</h2>
+    		<div class="table-responsive">			
     		<table class="table table-hover">
     			<tr>
     				<th class="table-active">Nombre</th>
@@ -42,7 +45,9 @@
         			   echo "</tr>";
         		}?>
     		</table>
-    		<h2>Lista de tipos</h2>			
+    		</div>
+    		<h2>Lista de tipos</h2>	
+    		<div class="table-responsive">		
     		<table class="table table-hover">
     			<tr class="table-active">
     				<th>Nombre</th>
@@ -61,8 +66,9 @@
         			   echo "</tr>";
         		}?>
     		</table>
+			</div>
 		</div>
-		<br>
+		<br><br><br><br><br>
 		<?php 
 		  (TEMPLATE)::footer();
 		?>

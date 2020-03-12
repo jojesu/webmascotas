@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Borrar tipo de mascota</title>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
     	<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -13,7 +14,7 @@
 		  (TEMPLATE)::header("Borrar tipo de mascota");
 		  (TEMPLATE)::nav();
 		?> 
-		<h2 class='text-center'>Confirmar el borrado del tipo de mascota <?=$tipo->nombre?></h2>
+		<br>
 		<div class="container">
     	<div class="row text-center mr-2">
           <div class="col-lg-12 col-md-6 mb-4 text-center">
@@ -34,7 +35,6 @@
           </div>
         </div>
         </div>
-		<a class='text-center' href="/tipo/list"><h3>Volver al listado de tipos de mascotas</h3></a>
 		
 		<?php 
 		  (TEMPLATE)::footer();

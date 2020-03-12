@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Baja de usuario</title>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
     	<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -31,8 +32,8 @@
                     <div class="form-group">
                     	<input type="submit" name="borrar" value="Borrar" class="btn btn-primary btn-user btn-block">
                     	<hr>
-                    	<a class="btn btn-primary" href="/raza/show/<?=$raza->id?>">Detalles</a> 
-        				<a class="btn btn-primary" href="/raza/list">Volver al listado de mascotas</a>
+                    	<a class="btn btn-primary mb-2" href="/raza/show/<?=$raza->id?>">Detalles</a> 
+        				<a class="btn btn-primary mb-2" href="/raza/list">Volver al listado de mascotas</a>
                     </div>
                   </form>
                   <hr>

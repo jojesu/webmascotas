@@ -3,6 +3,7 @@
     <html>
     	<head>
     		<meta charset="UTF-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     		<title>Portada</title>
     		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
         	<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -36,21 +37,21 @@
         		  "<p>Aqui puedes ver tu perfil</p>":
         		  "<p>Podrias ver tu perfil pero no estas logeado</p>";  		
     		 ?></a>.
-			</div>-->
-			<div class="container">
-    		<?php 
+			</div>-->	
+			<div class="text-center">	
+    		<?php
+    		
     		  $ultimasFotos= Foto::getUltimas(12);
     		  foreach ($ultimasFotos as $foto)
-    		   echo "<img class='' src='/$foto->fichero' alt='' width='275' height='200'>";
+    		   echo "<img style='padding:0.3em; border-radius:20px;' src='/$foto->fichero' alt='' width='275' height='200'>";
     		?>
-    		
-    		<!--<p class='mb-10'>Esta es una aplicación de prueba para comprender el MVC.</p>-->
+    		</div>
+    		<br><br><br><br><br><br>		   		 
     		</div> 
-    		</div>  		
     		<?php 
     		  (TEMPLATE)::footer();
-    		?>
-    	</body>
-    	
+    		?> 
+    		 		
+    	</body>   	
     </html>
 

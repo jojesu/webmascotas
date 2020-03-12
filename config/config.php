@@ -1,6 +1,4 @@
 <?php
-
-    // Fichero config.php
     
     // PARA EL AUTOLOAD
     $classmap = ['controllers','models','libraries','templates']; // directorios donde buscar clases
@@ -9,9 +7,9 @@
     define('TEMPLATE','Basic');
     
     // PARAMETROS DE CONFIGURACION BDD 
-    define('DB_HOST','10.199.26.185');    // host
+    define('DB_HOST','localhost');    // host
 
-    define('DB_USER','alumne');       // usuario
+    define('DB_USER','root');       // usuario
 
    // define('DB_USER','root');       // usuario
 

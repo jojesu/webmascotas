@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Actualizar datos de usuarios</title>
 		<script src="https://kit.fontawesome.com/b96ccb0f2a.js" crossorigin="anonymous"></script>
 		<link href="/css/sb-admin-2.min.css" rel="stylesheet">
@@ -24,7 +25,7 @@
 		<br>
 		<div class="container"> 
 		<h2>Lista de usuarios</h2>
-			
+		<div class="table-responsive">	
 		<table class="table table-hover">
 			<tr class="table-active">
 				<th>Usuario</th>
@@ -46,6 +47,7 @@
     			   echo "</tr>";
     		}?>
 		</table>
+		</div>
 		</div>
 		<br>
 		<?php 
